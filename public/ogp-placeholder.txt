@@ -1,0 +1,9 @@
+OGP画像をここに配置してください
+
+ファイル名: ogp.png または ogp.jpg
+推奨サイズ: 1200x630px
+
+詳細は OGP-IMAGE-GUIDE.md を参照してください。
+
+推奨画像のダウンロードURL:
+https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630

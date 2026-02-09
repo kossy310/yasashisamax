@@ -1,26 +1,92 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* カラーパレット */
+  --color-ivory: #faf8f3;
+  --color-ivory-dark: #f5f2ea;
+  --color-pastel-pink: #ffd6e8;
+  --color-pastel-blue: #d6e8ff;
+  --color-pastel-green: #d6ffe8;
+  --color-pastel-peach: #ffe8d6;
+  --color-text-primary: #4a4a4a;
+  --color-text-secondary: #6b6b6b;
+  
+  /* フォント */
+  --font-family-sans: var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-family-heading: var(--font-zen-maru), ui-sans-serif, system-ui, sans-serif;
+  
+  /* シャドウ */
+  --shadow-soft: 0 4px 20px rgb(0 0 0 / 0.08);
+  --shadow-soft-hover: 0 8px 30px rgb(0 0 0 / 0.12);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-ivory);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans);
+}
+
+/* カスタムユーティリティクラス */
+.font-heading {
+  font-family: var(--font-family-heading);
+}
+
+.text-text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.bg-ivory {
+  background-color: var(--color-ivory);
+}
+
+.bg-ivory-dark {
+  background-color: var(--color-ivory-dark);
+}
+
+.bg-pastel-pink {
+  background-color: var(--color-pastel-pink);
+}
+
+.bg-pastel-blue {
+  background-color: var(--color-pastel-blue);
+}
+
+.bg-pastel-green {
+  background-color: var(--color-pastel-green);
+}
+
+.bg-pastel-peach {
+  background-color: var(--color-pastel-peach);
+}
+
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+.shadow-soft-hover {
+  box-shadow: var(--shadow-soft-hover);
+}
+
+.border-pastel-pink {
+  border-color: var(--color-pastel-pink);
+}
+
+.focus\:border-pastel-pink:focus {
+  border-color: var(--color-pastel-pink);
+}
+
+.focus\:ring-pastel-pink\/20:focus {
+  --tw-ring-color: rgb(255 214 232 / 0.2);
+}
+
+.hover\:bg-opacity-80:hover {
+  --tw-bg-opacity: 0.8;
 }
