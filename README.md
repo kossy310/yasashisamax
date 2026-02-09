@@ -197,3 +197,4 @@ npm run build
 
 © 2026 優しさMAX. All rights reserved.
 # yasashisamax
+# yasashisamax
