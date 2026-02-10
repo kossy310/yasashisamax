@@ -5,11 +5,11 @@ import Image from "next/image";
 import { AnimatedSectionTitle } from "@/components/ui/AnimatedText";
 
 const keywords = [
-  "心が解ける",
-  "やわらかさ",
-  "寄り添う",
-  "包み込む",
-  "安心感",
+  "専門性と親しみやすさ",
+  "伴走型サポート",
+  "スモールスタート",
+  "データ分析",
+  "DX支援",
   "信頼",
 ];
 
@@ -25,15 +25,17 @@ export function About() {
           className="text-center mb-16"
         >
           <AnimatedSectionTitle className="text-4xl md:text-5xl font-heading font-bold text-text-primary mb-6">
-            私たちが大切にする優しさ
+            株式会社やさしさMAXについて
           </AnimatedSectionTitle>
           <p className="text-lg text-text-secondary leading-relaxed max-w-3xl mx-auto">
-            優しさMAXが考える「優しさ」とは、一方的な気遣いではなく、
-            お互いが心地よく過ごせる関係性を築くこと。
+            「IT」や「AI」といった言葉は、時に冷たく難解な印象を与えますが、
+            <br />
+            私たちはそれを「温かい手助け」のツールとして活用します。
             <br />
             <br />
-            私たちは、誰もが安心して自分らしくいられる空間を作り、
-            それぞれの心に寄り添うサービスを提供します。
+            データに基づいた確かな分析と、人間味あふれる丁寧なサポートを融合させ、
+            <br />
+            お客様の困りごとを解決し、事業の成長を優しく、力強く後押しします。
           </p>
         </motion.div>
 

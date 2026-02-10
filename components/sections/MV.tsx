@@ -50,20 +50,22 @@ export function MV() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center">
           <h1 className="text-5xl md:text-7xl font-heading font-bold text-text-primary mb-6">
-            <AnimatedText text="心が解ける" delay={0.2} />
+            <AnimatedText text="困っている人を、" delay={0.2} />
             <br />
-            <AnimatedText text="優しい世界へ" delay={0.8} />
+            <AnimatedText text="やさしさで助ける" delay={0.8} />
           </h1>
 
           <motion.p
-            className="text-lg md:text-xl text-text-secondary mb-12 max-w-2xl mx-auto"
+            className="text-lg md:text-xl text-text-secondary mb-12 max-w-2xl mx-auto leading-relaxed"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            あなたの心に寄り添い、やわらかく包み込む。
+            急速に変化するデジタル社会で取り残されがちな中小企業の皆様に寄り添います。
             <br />
-            優しさMAXは、新しい優しさの形を提案します。
+            データに基づいた確かな分析と、人間味あふれる丁寧なサポートで、
+            <br />
+            事業の成長を優しく、力強く後押しします。
           </motion.p>
 
           <motion.div

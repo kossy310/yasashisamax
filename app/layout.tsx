@@ -15,19 +15,19 @@ const zenMaruGothic = Zen_Maru_Gothic({
 });
 
 export const metadata: Metadata = {
-  title: "優しさMAX - 心が解ける優しい世界へ",
-  description: "優しさMAXは、心が解けるような優しい体験を提供するブランドです。",
+  title: "株式会社やさしさMAX - 中小企業のDX推進を優しく、力強く支援",
+  description: "データに基づいた確かな分析と、人間味あふれる丁寧なサポートで、中小企業の皆様の事業成長を優しく、力強く後押しします。",
   openGraph: {
-    title: "優しさMAX - 心が解ける優しい世界へ",
-    description: "優しさMAXは、心が解けるような優しい体験を提供するブランドです。",
+    title: "株式会社やさしさMAX - 中小企業のDX推進を優しく、力強く支援",
+    description: "データに基づいた確かな分析と、人間味あふれる丁寧なサポートで、中小企業の皆様の事業成長を優しく、力強く後押しします。",
     images: ["/ogp.png"],
     locale: "ja_JP",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "優しさMAX - 心が解ける優しい世界へ",
-    description: "優しさMAXは、心が解けるような優しい体験を提供するブランドです。",
+    title: "株式会社やさしさMAX - 中小企業のDX推進を優しく、力強く支援",
+    description: "データに基づいた確かな分析と、人間味あふれる丁寧なサポートで、中小企業の皆様の事業成長を優しく、力強く後押しします。",
     images: ["/ogp.png"],
   },
 };

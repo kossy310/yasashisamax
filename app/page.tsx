@@ -2,7 +2,10 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { MV } from "@/components/sections/MV";
 import { About } from "@/components/sections/About";
+import { Strengths } from "@/components/sections/Strengths";
 import { Service } from "@/components/sections/Service";
+import { Pricing } from "@/components/sections/Pricing";
+import { AutomationExamples } from "@/components/sections/AutomationExamples";
 import { News } from "@/components/sections/News";
 import { Works } from "@/components/sections/Works";
 import { Contact } from "@/components/sections/Contact";
@@ -26,7 +29,10 @@ export default async function Home() {
       <main>
         <MV />
         <About />
+        <Strengths />
         <Service />
+        <Pricing />
+        <AutomationExamples />
         <Works worksList={worksList} />
         <News newsList={newsList} />
         <Contact />

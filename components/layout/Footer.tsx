@@ -21,7 +21,7 @@ export function Footer() {
               優しさMAX
             </h3>
             <p className="text-text-secondary text-sm">
-              心が解けるような優しい体験を提供します
+              中小企業のDX推進を優しく、力強く支援します
             </p>
           </div>
 
