@@ -39,7 +39,7 @@ export function Strengths() {
             当社の強み
           </AnimatedSectionTitle>
           <p className="text-lg text-text-secondary">
-            やさしさMAXが選ばれる3つの理由
+            やさしさマックスが選ばれる3つの理由
           </p>
         </motion.div>
 

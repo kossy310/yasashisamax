@@ -18,7 +18,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div>
             <h3 className="text-xl font-heading font-bold text-text-primary mb-4">
-              優しさMAX
+              やさしさマックス
             </h3>
             <p className="text-text-secondary text-sm">
               中小企業のDX推進を優しく、力強く支援します
@@ -68,7 +68,7 @@ export function Footer() {
 
         <div className="border-t border-text-secondary/20 pt-6 text-center">
           <p className="text-text-secondary text-sm">
-            &copy; {currentYear} 優しさMAX. All rights reserved.
+            &copy; {currentYear} やさしさマックス. All rights reserved.
           </p>
         </div>
       </div>

@@ -12,7 +12,7 @@ export function MV() {
       <div className="absolute inset-0 z-0">
         <Image
           src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg"
-          alt="心が解ける優しい世界"
+          alt="困っている人を、やさしさで助ける"
           fill
           className="object-cover"
           priority

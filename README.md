@@ -1,6 +1,6 @@
-# 優しさMAX - ブランドサイト
+# やさしさマックス - 株式会社コーポレートサイト
 
-心が解けるような優しい体験を提供するブランドサイトです。
+中小企業のDX推進を優しく、力強く支援する企業のコーポレートサイトです。
 
 ## 技術スタック
 
@@ -195,6 +195,6 @@ npm run build
 
 ## ライセンス
 
-© 2026 優しさMAX. All rights reserved.
+© 2026 やさしさマックス. All rights reserved.
 # yasashisamax
 # yasashisamax

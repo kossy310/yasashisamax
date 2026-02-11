@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props) {
   }
 
   return {
-    title: `${news.title} | 優しさMAX`,
+    title: `${news.title} | やさしさマックス`,
     description: news.body.substring(0, 100),
     openGraph: {
       title: news.title,

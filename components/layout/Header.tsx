@@ -31,7 +31,7 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="text-2xl font-heading font-bold text-text-primary">
-            優しさMAX
+            やさしさマックス
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
