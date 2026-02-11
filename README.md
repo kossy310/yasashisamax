@@ -1,4 +1,4 @@
-# やさしさマックス - 株式会社コーポレートサイト
+# やさしさマックス - コーポレートサイト
 
 中小企業のDX推進を優しく、力強く支援する企業のコーポレートサイトです。
 
@@ -32,16 +32,21 @@ npm install
 \`.env.local\` ファイルを作成し、以下の環境変数を設定してください：
 
 \`\`\`env
+
 # microCMS
+
 MICROCMS_SERVICE_DOMAIN=your-service-name
 MICROCMS_API_KEY=your-api-key
 
 # Cloudflare Turnstile
+
 NEXT_PUBLIC_TURNSTILE_SITE_KEY=your-site-key
 TURNSTILE_SECRET_KEY=your-secret-key
 
 # Email (オプション: Resendなど)
+
 # RESEND_API_KEY=your-resend-api-key
+
 \`\`\`
 
 ### 3. microCMSのセットアップ
@@ -53,28 +58,28 @@ microCMSで以下の2つのAPIを作成してください：
 - エンドポイント: \`news\`
 - タイプ: リスト形式
 
-| フィールドID | 表示名 | 種類 |
-|------------|--------|------|
-| title | タイトル | テキストフィールド |
-| body | 本文 | リッチエディタ |
-| category | カテゴリ | セレクトフィールド（お知らせ、活動報告、イベント、メディア掲載） |
-| publishedAt | 公開日 | 日時 |
-| eyecatch | アイキャッチ画像 | 画像 |
+| フィールドID | 表示名           | 種類                                                             |
+| ------------ | ---------------- | ---------------------------------------------------------------- |
+| title        | タイトル         | テキストフィールド                                               |
+| body         | 本文             | リッチエディタ                                                   |
+| category     | カテゴリ         | セレクトフィールド（お知らせ、活動報告、イベント、メディア掲載） |
+| publishedAt  | 公開日           | 日時                                                             |
+| eyecatch     | アイキャッチ画像 | 画像                                                             |
 
 #### Works API
 
 - エンドポイント: \`works\`
 - タイプ: リスト形式
 
-| フィールドID | 表示名 | 種類 |
-|------------|--------|------|
-| title | タイトル | テキストフィールド |
-| description | 説明 | テキストエリア |
-| thumbnail | サムネイル | 画像 |
-| images | ギャラリー画像 | 複数画像 |
-| tags | タグ | 複数選択（カスタムフィールド） |
-| publishedAt | 公開日 | 日時 |
-| url | リンクURL | テキストフィールド |
+| フィールドID | 表示名         | 種類                           |
+| ------------ | -------------- | ------------------------------ |
+| title        | タイトル       | テキストフィールド             |
+| description  | 説明           | テキストエリア                 |
+| thumbnail    | サムネイル     | 画像                           |
+| images       | ギャラリー画像 | 複数画像                       |
+| tags         | タグ           | 複数選択（カスタムフィールド） |
+| publishedAt  | 公開日         | 日時                           |
+| url          | リンクURL      | テキストフィールド             |
 
 ### 4. 開発サーバーの起動
 
@@ -116,28 +121,33 @@ Vercelダッシュボードで以下の環境変数を設定してください�
 \`\`\`
 .
 ├── app/
-│   ├── api/
-│   │   └── contact/           # Contact API Route
-│   ├── news/
-│   │   └── [slug]/           # ニュース詳細ページ
-│   ├── works/
-│   │   └── [slug]/           # 実績詳細ページ
-│   ├── layout.tsx            # ルートレイアウト
-│   ├── page.tsx              # トップページ
-│   └── globals.css           # グローバルスタイル
+│ ├── api/
+│ │ └── contact/ # お問い合わせAPI (Gmail SMTP)
+│ ├── news/
+│ │ └── [slug]/ # ニュース詳細ページ
+│ ├── privacy/
+│ │ └── page.tsx # プライバシーポリシー
+│ ├── terms/
+│ │ └── page.tsx # 利用規約
+│ ├── works/
+│ │ └── [slug]/ # 実績詳細ページ
+│ ├── layout.tsx # ルートレイアウト
+│ ├── page.tsx # トップページ
+│ └── globals.css # グローバルスタイル
 ├── components/
-│   ├── forms/                # フォームコンポーネント
-│   ├── layout/               # Header, Footer
-│   ├── sections/             # MV, About, Service, など
-│   └── ui/                   # Button などの共通UI
+│ ├── forms/ # フォームコンポーネント
+│ ├── layout/ # Header, Footer
+│ ├── sections/ # MV, About, Service, など
+│ └── ui/ # Button などの共通UI
 ├── lib/
-│   ├── microcmsClient.ts     # microCMSクライアント
-│   ├── news.ts               # News関連関数
-│   └── works.ts              # Works関連関数
+│ ├── microcmsClient.ts # microCMSクライアント
+│ ├── news.ts # News関連関数
+│ └── works.ts # Works関連関数
 ├── types/
-│   ├── news.ts               # News型定義
-│   └── works.ts              # Works型定義
-└── public/                   # 静的ファイル
+│ ├── news.ts # News型定義
+│ ├── nodemailer.d.ts # nodemailer型宣言
+│ └── works.ts # Works型定義
+└── public/ # 静的ファイル
 \`\`\`
 
 ## カスタマイズ
@@ -148,9 +158,9 @@ Vercelダッシュボードで以下の環境変数を設定してください�
 
 \`\`\`css
 @theme {
-  --color-ivory: #faf8f3;
-  --color-pastel-pink: #ffd6e8;
-  /* その他のカラー */
+--color-ivory: #faf8f3;
+--color-pastel-pink: #ffd6e8;
+/_ その他のカラー _/
 }
 \`\`\`
 
@@ -188,7 +198,9 @@ export const revalidate = 300; // 秒単位で指定
 ### ビルドエラー
 
 \`\`\`bash
+
 # キャッシュをクリア
+
 rm -rf .next
 npm run build
 \`\`\`
@@ -196,5 +208,7 @@ npm run build
 ## ライセンス
 
 © 2026 やさしさマックス. All rights reserved.
+
 # yasashisamax
+
 # yasashisamax

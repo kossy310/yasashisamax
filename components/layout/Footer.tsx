@@ -66,8 +66,22 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-text-secondary/20 pt-6 text-center">
-          <p className="text-text-secondary text-sm">
+        <div className="border-t border-text-secondary/20 pt-6">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
+            <Link
+              href="/terms"
+              className="text-text-secondary hover:text-text-primary transition-colors text-sm"
+            >
+              利用規約
+            </Link>
+            <Link
+              href="/privacy"
+              className="text-text-secondary hover:text-text-primary transition-colors text-sm"
+            >
+              プライバシーポリシー
+            </Link>
+          </div>
+          <p className="text-text-secondary text-sm text-center mt-4">
             &copy; {currentYear} やさしさマックス. All rights reserved.
           </p>
         </div>
