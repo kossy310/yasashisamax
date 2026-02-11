@@ -31,7 +31,7 @@ export function Contact() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="bg-white rounded-3xl p-8 md:p-12 shadow-soft mb-8"
         >
-          <div className="text-center mb-8">
+          <div className="text-center">
             <h3 className="text-2xl font-heading font-bold text-text-primary mb-4">
               LINEで気軽に相談
             </h3>
@@ -40,7 +40,7 @@ export function Contact() {
               <br />
               お友だち追加後、お気軽にメッセージをお送りください。
             </p>
-            <Button variant="primary" href="https://lin.ee/XLVGmjf">
+            <Button variant="line" href="https://lin.ee/XLVGmjf">
               LINE公式アカウントを追加
             </Button>
           </div>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const navItems = [
   { label: "トップ", href: "/#mv" },
@@ -21,7 +22,9 @@ export function Footer() {
               やさしさマックス
             </h3>
             <p className="text-text-secondary text-sm">
-              低予算でも、品質にこだわる。Web、印刷、業務効率化まで。
+              低予算でも、品質にこだわる。
+              <br />
+              Web、印刷、業務効率化まで。
             </p>
           </div>
 
@@ -48,19 +51,17 @@ export function Footer() {
             </h4>
             <div className="flex flex-col gap-3">
               <a
-                href="#"
+                href="https://lin.ee/XLVGmjf"
                 className="text-text-secondary hover:text-text-primary transition-colors duration-300 text-sm inline-flex items-center gap-2"
               >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M13.6 21h-3.2c-5.5 0-7.4-1.9-7.4-7.4V10.4C3 4.9 4.9 3 10.4 3h3.2c5.5 0 7.4 1.9 7.4 7.4v3.2c0 5.5-1.9 7.4-7.4 7.4z" />
-                </svg>
+                <Image
+                  src="/icon/linelogo.png"
+                  alt="LINE"
+                  width={20}
+                  height={20}
+                  className="w-5 h-5"
+                />
                 LINE公式アカウント
-              </a>
-              <a
-                href="#"
-                className="text-text-secondary hover:text-text-primary transition-colors duration-300 text-sm"
-              >
-                Instagram
               </a>
             </div>
           </div>

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
 
-type ButtonVariant = "primary" | "secondary" | "ghost";
+type ButtonVariant = "primary" | "secondary" | "ghost" | "line";
 
 type ButtonProps = {
   children: ReactNode;
@@ -18,6 +18,7 @@ const variantStyles: Record<ButtonVariant, string> = {
   primary: "bg-pastel-pink text-text-primary hover:bg-opacity-80",
   secondary: "bg-pastel-blue text-text-primary hover:bg-opacity-80",
   ghost: "bg-transparent border-2 border-text-primary text-text-primary hover:bg-text-primary hover:text-ivory",
+  line: "bg-[#06C755] text-white hover:bg-[#05B04C]",
 };
 
 export function Button({
