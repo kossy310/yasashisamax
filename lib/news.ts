@@ -68,7 +68,7 @@ export async function getAllNewsIds(): Promise<string[]> {
       endpoint: "news",
       queries: {
         fields: "id",
-        limit: 1000,
+        limit: 100,
       },
     });
     return response.contents.map((news) => news.id);

@@ -68,7 +68,7 @@ export async function getAllWorksIds(): Promise<string[]> {
       endpoint: "works",
       queries: {
         fields: "id",
-        limit: 1000,
+        limit: 100,
       },
     });
     return response.contents.map((works) => works.id);
