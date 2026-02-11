@@ -125,7 +125,7 @@ Vercelダッシュボードで以下の環境変数を設定してください�
 │ │ └── contact/ # お問い合わせAPI (Gmail SMTP)
 │ ├── news/
 │ │ └── [slug]/ # ニュース詳細ページ
-│ ├── privacy/
+│ ├── privacypolicy/
 │ │ └── page.tsx # プライバシーポリシー
 │ ├── terms/
 │ │ └── page.tsx # 利用規約

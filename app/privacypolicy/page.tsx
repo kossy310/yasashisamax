@@ -7,7 +7,7 @@ export const metadata = {
   description: "やさしさマックスのプライバシーポリシーです。",
 };
 
-export default function PrivacyPage() {
+export default function PrivacyPolicyPage() {
   return (
     <>
       <Header />

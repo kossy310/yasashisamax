@@ -100,7 +100,11 @@ export default function TermsPage() {
                   第6条（個人情報の取り扱い）
                 </h2>
                 <p>
-                  お客様の個人情報の取り扱いについては、当社のプライバシーポリシーに従い、適切に管理いたします。
+                  お客様の個人情報の取り扱いについては、当社の
+                <Link href="/privacypolicy" className="text-pastel-pink hover:underline">
+                  プライバシーポリシー
+                </Link>
+                に従い、適切に管理いたします。
                 </p>
               </section>
 

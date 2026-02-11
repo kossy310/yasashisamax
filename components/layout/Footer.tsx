@@ -1,12 +1,12 @@
 import Link from "next/link";
 
 const navItems = [
-  { label: "トップ", href: "#mv" },
-  { label: "私たちについて", href: "#about" },
-  { label: "サービス", href: "#service" },
-  { label: "実績", href: "#works" },
-  { label: "ニュース", href: "#news" },
-  { label: "お問い合わせ", href: "#contact" },
+  { label: "トップ", href: "/#mv" },
+  { label: "私たちについて", href: "/#about" },
+  { label: "サービス", href: "/#service" },
+  { label: "実績", href: "/#works" },
+  { label: "ニュース", href: "/#news" },
+  { label: "お問い合わせ", href: "/#contact" },
 ];
 
 export function Footer() {
@@ -31,13 +31,13 @@ export function Footer() {
             </h4>
             <nav className="flex flex-col gap-2">
               {navItems.map((item) => (
-                <a
+                <Link
                   key={item.href}
                   href={item.href}
                   className="text-text-secondary hover:text-text-primary transition-colors duration-300 text-sm"
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
@@ -75,7 +75,7 @@ export function Footer() {
               利用規約
             </Link>
             <Link
-              href="/privacy"
+              href="/privacypolicy"
               className="text-text-secondary hover:text-text-primary transition-colors text-sm"
             >
               プライバシーポリシー
