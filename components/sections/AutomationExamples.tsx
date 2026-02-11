@@ -48,10 +48,10 @@ export function AutomationExamples() {
           className="text-center mb-16"
         >
           <AnimatedSectionTitle className="text-4xl md:text-5xl font-heading font-bold text-text-primary mb-6">
-            こんな自動化・DX支援ができます！
+            業務の自動化事例
           </AnimatedSectionTitle>
           <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-            日々の事務作業や情報更新を自動化し、人件費削減やミス削減につながる仕組みづくりもお手伝いします。
+            日々の手間を、自動化で解決。導入しやすい仕組みづくりをお手伝いします。
           </p>
         </motion.div>
 

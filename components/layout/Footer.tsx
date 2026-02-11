@@ -21,7 +21,7 @@ export function Footer() {
               やさしさマックス
             </h3>
             <p className="text-text-secondary text-sm">
-              中小企業のDX推進を優しく、力強く支援します
+              低予算でも、品質にこだわる。Web、印刷、業務効率化まで。
             </p>
           </div>
 

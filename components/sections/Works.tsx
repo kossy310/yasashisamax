@@ -18,7 +18,7 @@ export function Works({ worksList }: WorksProps) {
             実績
           </AnimatedSectionTitle>
           <p className="text-lg text-text-secondary">
-            これまでに手がけたプロジェクトをご紹介します
+            これまでの制作実績をご紹介します
           </p>
         </div>
 

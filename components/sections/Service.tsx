@@ -51,7 +51,7 @@ export function Service() {
             サービス
           </AnimatedSectionTitle>
           <p className="text-lg text-text-secondary">
-            中小企業のDX推進を優しく、力強く支援します
+            あなたのビジネスに必要なものを、手の届く価格で。
           </p>
         </motion.div>
 

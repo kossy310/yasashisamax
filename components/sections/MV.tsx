@@ -11,14 +11,14 @@ export function MV() {
       {/* 背景画像 */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg"
-          alt="困っている人を、やさしさで助ける"
+          src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg"
+          alt="HPも名刺も業務の自動化も。少ない予算で、ちゃんと作る"
           fill
           sizes="100vw"
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-ivory/50 via-ivory/40 to-ivory/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ivory/80 via-ivory/70 to-ivory/85" />
       </div>
 
       {/* 背景装飾 */}
@@ -50,23 +50,23 @@ export function MV() {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center">
-          <h1 className="text-5xl md:text-7xl font-heading font-bold text-text-primary mb-6">
-            <AnimatedText text="困っている人を、" delay={0.2} />
+          <h1 className="text-5xl md:text-7xl font-heading font-bold text-[#2d3748] mb-6 drop-shadow-sm">
+            <AnimatedText text="HPも名刺も業務の自動化も。" delay={0.2} />
             <br />
-            <AnimatedText text="やさしさで助ける" delay={0.8} />
+            <AnimatedText text="少ない予算で、ちゃんと作る。" delay={0.8} />
           </h1>
 
           <motion.p
-            className="text-lg md:text-xl text-text-secondary mb-12 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-[#4a5568] mb-12 max-w-2xl mx-auto leading-relaxed drop-shadow-sm"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            急速に変化するデジタル社会で取り残されがちな中小企業の皆様に寄り添います。
+            「何から始めればいいかわからない」そんな方に寄り添います。
             <br />
-            データに基づいた確かな分析と、人間味あふれる丁寧なサポートで、
+            HP制作は最短7日、名刺・印刷・動画も低価格で。
             <br />
-            事業の成長を優しく、力強く後押しします。
+            まずは小さく始めることから、一緒に進めましょう。
           </motion.p>
 
           <motion.div

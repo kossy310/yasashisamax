@@ -54,7 +54,7 @@ export function Pricing() {
             料金プランの一例
           </AnimatedSectionTitle>
           <p className="text-lg text-text-secondary max-w-2xl mx-auto">
-            スモールスタート歓迎。まずは小さく始めて、必要に応じて拡張できるプランをご用意しています。
+            まずは小さく、始めやすく。必要に応じて、段階的に拡張できるプランです。
           </p>
         </motion.div>
 

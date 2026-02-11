@@ -20,7 +20,7 @@ export function Contact() {
             お問い合わせ
           </AnimatedSectionTitle>
           <p className="text-lg text-text-secondary">
-            ご質問やご相談など、お気軽にお問い合わせください
+            まずは気軽に、ご相談ください。どんな小さなことでも大丈夫です。
           </p>
         </motion.div>
 
