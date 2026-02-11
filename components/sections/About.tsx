@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { AnimatedSectionTitle } from "@/components/ui/AnimatedText";
 
 const keywords = [
@@ -75,7 +76,7 @@ export function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-3"
+          className="flex flex-wrap justify-center gap-3 mb-12"
         >
           {keywords.map((keyword, index) => (
             <motion.span
@@ -90,6 +91,21 @@ export function About() {
               {keyword}
             </motion.span>
           ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-center"
+        >
+          <Link
+            href="/vision"
+            className="inline-block px-8 py-4 bg-pastel-pink text-text-primary rounded-full font-medium hover:bg-opacity-80 transition-all duration-300 shadow-soft hover:shadow-soft-hover hover:-translate-y-1"
+          >
+            やさしさマックスのビジョン
+          </Link>
         </motion.div>
       </div>
     </section>

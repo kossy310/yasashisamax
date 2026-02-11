@@ -129,6 +129,8 @@ Vercelダッシュボードで以下の環境変数を設定してください�
 │ │ └── page.tsx # プライバシーポリシー
 │ ├── terms/
 │ │ └── page.tsx # 利用規約
+│ ├── vision/
+│ │ └── page.tsx # 事業ビジョン
 │ ├── works/
 │ │ └── [slug]/ # 実績詳細ページ
 │ ├── layout.tsx # ルートレイアウト
