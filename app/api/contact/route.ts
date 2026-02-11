@@ -50,13 +50,23 @@ async function sendEmail(data: ContactFormData): Promise<boolean> {
     return false;
   }
 
+  // アプリパスワードのスペースを除去（環境変数でスペースが入ることがある）
+  const pass = gmailAppPassword.replace(/\s/g, "");
+
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
       user: gmailUser,
-      pass: gmailAppPassword,
+      pass,
     },
   });
+
+  try {
+    await transporter.verify();
+  } catch (verifyError) {
+    console.error("SMTP接続エラー（Gmail認証に失敗）:", verifyError);
+    return false;
+  }
 
   try {
     await transporter.sendMail({
@@ -79,16 +89,22 @@ ${data.message}
         <p>${data.message.replace(/\n/g, "<br>")}</p>
       `,
     });
+    console.log("メール送信成功:", gmailUser, "宛");
     return true;
   } catch (error) {
     console.error("Email sending error:", error);
+    if (error instanceof Error) {
+      console.error("エラー詳細:", error.message);
+    }
     return false;
   }
 }
 
 export async function POST(request: Request) {
+  console.log("[Contact API] POST リクエスト受信");
   try {
     const data: ContactFormData = await request.json();
+    console.log("[Contact API] データ受信:", { name: data.name, email: data.email });
 
     // バリデーション
     if (!data.name || !data.email || !data.message || !data.turnstileToken) {
@@ -99,8 +115,10 @@ export async function POST(request: Request) {
     }
 
     // Turnstileトークンの検証
+    console.log("[Contact API] Turnstile検証中...");
     const isValidToken = await verifyTurnstileToken(data.turnstileToken);
     if (!isValidToken) {
+      console.log("[Contact API] Turnstile検証失敗");
       return NextResponse.json(
         { error: "スパム対策の検証に失敗しました" },
         { status: 403 },
@@ -108,14 +126,17 @@ export async function POST(request: Request) {
     }
 
     // メール送信
+    console.log("[Contact API] メール送信開始");
     const emailSent = await sendEmail(data);
     if (!emailSent) {
+      console.log("[Contact API] メール送信失敗");
       return NextResponse.json(
         { error: "メール送信に失敗しました" },
         { status: 500 },
       );
     }
 
+    console.log("[Contact API] 送信完了、200返却");
     return NextResponse.json(
       { message: "お問い合わせを受け付けました" },
       { status: 200 },

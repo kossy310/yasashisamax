@@ -84,6 +84,7 @@ export default async function WorksDetailPage({ params }: Props) {
                 src={work.thumbnail.url}
                 alt={work.title}
                 fill
+                sizes="(max-width: 768px) 100vw, 896px"
                 className="object-cover"
               />
             </div>
@@ -145,6 +146,7 @@ export default async function WorksDetailPage({ params }: Props) {
                     src={image.url}
                     alt={`${work.title} - ${index + 1}`}
                     fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover"
                   />
                 </div>

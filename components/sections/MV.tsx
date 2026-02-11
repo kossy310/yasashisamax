@@ -14,6 +14,7 @@ export function MV() {
           src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg"
           alt="困っている人を、やさしさで助ける"
           fill
+          sizes="100vw"
           className="object-cover"
           priority
         />

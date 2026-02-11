@@ -51,6 +51,7 @@ export function About() {
               src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg"
               alt="寄り添う優しさ"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
           </motion.div>
@@ -66,6 +67,7 @@ export function About() {
               src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg"
               alt="心が解ける瞬間"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
           </motion.div>

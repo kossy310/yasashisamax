@@ -94,6 +94,7 @@ export default async function NewsDetailPage({ params }: Props) {
                   src={news.eyecatch.url}
                   alt={news.title}
                   fill
+                  sizes="(max-width: 768px) 100vw, 896px"
                   className="object-cover"
                 />
               </div>
