@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
 type ContactFormData = {
   name: string;
@@ -28,7 +29,7 @@ async function verifyTurnstileToken(token: string): Promise<boolean> {
           secret: secretKey,
           response: token,
         }),
-      }
+      },
     );
 
     const data = await response.json();
@@ -39,56 +40,50 @@ async function verifyTurnstileToken(token: string): Promise<boolean> {
   }
 }
 
-// メール送信関数（例: Resendを使用する場合）
+// メール送信関数（Gmail SMTP）
 async function sendEmail(data: ContactFormData): Promise<boolean> {
-  // 実際のメール送信ロジックをここに実装
-  // 例: Resend, SendGrid, Nodemailer など
-  
-  // デモ用のログ出力
-  console.log("Contact form submission:", {
-    name: data.name,
-    email: data.email,
-    message: data.message,
-  });
+  const gmailUser = process.env.GMAIL_USER;
+  const gmailAppPassword = process.env.GMAIL_APP_PASSWORD;
 
-  // 実際の実装例（Resendを使用する場合）:
-  /*
-  const resendApiKey = process.env.RESEND_API_KEY;
-  if (!resendApiKey) {
-    console.error("RESEND_API_KEY is not set");
+  if (!gmailUser || !gmailAppPassword) {
+    console.error("GMAIL_USER or GMAIL_APP_PASSWORD is not set");
     return false;
   }
 
-  try {
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${resendApiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: "contact@yasashisa-max.com",
-        to: "info@yasashisa-max.com",
-        subject: `お問い合わせ: ${data.name}様より`,
-        html: `
-          <h2>新しいお問い合わせがありました</h2>
-          <p><strong>お名前:</strong> ${data.name}</p>
-          <p><strong>メールアドレス:</strong> ${data.email}</p>
-          <p><strong>お問い合わせ内容:</strong></p>
-          <p>${data.message}</p>
-        `,
-      }),
-    });
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: gmailUser,
+      pass: gmailAppPassword,
+    },
+  });
 
-    return response.ok;
+  try {
+    await transporter.sendMail({
+      from: `"やさしさマックス" <${gmailUser}>`,
+      to: gmailUser,
+      replyTo: data.email,
+      subject: `【お問い合わせ】${data.name}様より`,
+      text: `
+お名前: ${data.name}
+メールアドレス: ${data.email}
+
+お問い合わせ内容:
+${data.message}
+      `.trim(),
+      html: `
+        <h2>新しいお問い合わせがありました</h2>
+        <p><strong>お名前:</strong> ${data.name}</p>
+        <p><strong>メールアドレス:</strong> <a href="mailto:${data.email}">${data.email}</a></p>
+        <p><strong>お問い合わせ内容:</strong></p>
+        <p>${data.message.replace(/\n/g, "<br>")}</p>
+      `,
+    });
+    return true;
   } catch (error) {
     console.error("Email sending error:", error);
     return false;
   }
-  */
-
-  // デモ用に常に成功を返す
-  return true;
 }
 
 export async function POST(request: Request) {
@@ -99,7 +94,7 @@ export async function POST(request: Request) {
     if (!data.name || !data.email || !data.message || !data.turnstileToken) {
       return NextResponse.json(
         { error: "必須項目が入力されていません" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -108,7 +103,7 @@ export async function POST(request: Request) {
     if (!isValidToken) {
       return NextResponse.json(
         { error: "スパム対策の検証に失敗しました" },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -117,19 +112,19 @@ export async function POST(request: Request) {
     if (!emailSent) {
       return NextResponse.json(
         { error: "メール送信に失敗しました" },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
     return NextResponse.json(
       { message: "お問い合わせを受け付けました" },
-      { status: 200 }
+      { status: 200 },
     );
   } catch (error) {
     console.error("Contact form error:", error);
     return NextResponse.json(
       { error: "サーバーエラーが発生しました" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
