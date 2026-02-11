@@ -40,7 +40,7 @@ export function Contact() {
               <br />
               お友だち追加後、お気軽にメッセージをお送りください。
             </p>
-            <Button variant="primary" href="https://line.me/R/ti/p/@yasashisa-max">
+            <Button variant="primary" href="https://lin.ee/XLVGmjf">
               LINE公式アカウントを追加
             </Button>
           </div>
