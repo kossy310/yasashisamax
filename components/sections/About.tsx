@@ -25,7 +25,7 @@ export function About() {
           className="text-center mb-16"
         >
           <AnimatedSectionTitle className="text-4xl md:text-5xl font-heading font-bold text-text-primary mb-6">
-            株式会社やさしさマックスについて
+            やさしさマックスについて
           </AnimatedSectionTitle>
           <p className="text-lg text-text-secondary leading-relaxed max-w-3xl mx-auto">
             「IT」や「AI」といった言葉は、時に冷たく難解な印象を与えますが、
