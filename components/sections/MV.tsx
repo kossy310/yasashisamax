@@ -7,15 +7,28 @@ import { AnimatedText } from "@/components/ui/AnimatedText";
 
 export function MV() {
   return (
-    <section id="mv" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
+    <section
+      id="mv"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
+    >
       {/* 背景画像 */}
       <div className="absolute inset-0 z-0">
+        {/* PC用背景画像 */}
         <Image
-          src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg"
+          src="/mv/mv.png"
           alt="HPも名刺も業務の自動化も。少ない予算で、ちゃんと作る"
           fill
           sizes="100vw"
-          className="object-cover"
+          className="object-cover hidden md:block"
+          priority
+        />
+        {/* スマホ用背景画像 */}
+        <Image
+          src="/mv/mv_sp.png"
+          alt="HPも名刺も業務の自動化も。少ない予算で、ちゃんと作る"
+          fill
+          sizes="100vw"
+          className="object-cover block md:hidden"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-b from-ivory/80 via-ivory/70 to-ivory/85" />
@@ -50,14 +63,15 @@ export function MV() {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center">
-          <h1 className="text-5xl md:text-7xl font-heading font-bold text-[#2d3748] mb-6 drop-shadow-sm">
+          <h1 className="text-5xl md:text-7xl font-heading font-bold text-[#2d3748] mb-6" style={{ textShadow: '0 1px 4px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.15)' }}>
             <AnimatedText text="HPも名刺も業務の自動化も。" delay={0.2} />
             <br />
             <AnimatedText text="少ない予算で、ちゃんと作る。" delay={0.8} />
           </h1>
 
           <motion.p
-            className="text-lg md:text-xl text-[#4a5568] mb-12 max-w-2xl mx-auto leading-relaxed drop-shadow-sm"
+            className="text-lg md:text-xl text-[#4a5568] mb-12 max-w-2xl mx-auto leading-relaxed"
+            style={{ textShadow: '0 1px 3px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.15)' }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -71,11 +85,12 @@ export function MV() {
 
           <motion.div
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            style={{ filter: 'drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2))' }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <Button variant="primary" href="#contact">
+            <Button variant="line" href="#contact">
               LINEで相談する
             </Button>
             <Button variant="ghost" href="#contact">
