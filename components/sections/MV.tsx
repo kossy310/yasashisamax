@@ -5,11 +5,15 @@ import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { AnimatedText } from "@/components/ui/AnimatedText";
 
+// Blur Up用のプレースホルダー（アイボリー系のぼかし）
+const BLUR_DATA_URL =
+  "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBEQACEQA/AMf/2Q==";
+
 export function MV() {
   return (
     <section
       id="mv"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
+      className="h-[600px] md:h-[700px] flex items-center justify-center relative overflow-hidden pt-20"
     >
       {/* 背景画像 */}
       <div className="absolute inset-0 z-0">
@@ -18,18 +22,24 @@ export function MV() {
           src="/mv/mv.png"
           alt="HPも名刺も業務の自動化も。少ない予算で、ちゃんと作る"
           fill
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, 1920px"
           className="object-cover hidden md:block"
           priority
+          quality={85}
+          placeholder="blur"
+          blurDataURL={BLUR_DATA_URL}
         />
         {/* スマホ用背景画像 */}
         <Image
           src="/mv/mv_sp.png"
           alt="HPも名刺も業務の自動化も。少ない予算で、ちゃんと作る"
           fill
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, 768px"
           className="object-cover block md:hidden"
           priority
+          quality={85}
+          placeholder="blur"
+          blurDataURL={BLUR_DATA_URL}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-ivory/80 via-ivory/70 to-ivory/85" />
       </div>
