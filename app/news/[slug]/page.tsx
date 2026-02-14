@@ -70,7 +70,7 @@ export default async function NewsDetailPage({ params }: Props) {
       <main className="pt-24 pb-24 min-h-screen bg-ivory">
         <article className="max-w-4xl mx-auto px-6">
           <Link
-            href="/#news"
+            href="/news"
             className="inline-flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors mb-8"
           >
             <svg

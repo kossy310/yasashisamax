@@ -7,21 +7,16 @@ import { Service } from "@/components/sections/Service";
 import { Pricing } from "@/components/sections/Pricing";
 import { AutomationExamples } from "@/components/sections/AutomationExamples";
 import { News } from "@/components/sections/News";
-import { Works } from "@/components/sections/Works";
 import { Contact } from "@/components/sections/Contact";
 import { getNewsList } from "@/lib/news";
-import { getWorksList } from "@/lib/works";
 
 // ISRを有効化（300秒ごとに再生成）
 export const revalidate = 300;
 
 export default async function Home() {
   // microCMSからデータを取得（本番環境では実際のAPIから取得）
-  const newsResponse = await getNewsList(5);
+  const newsResponse = await getNewsList(3);
   const newsList = newsResponse.contents;
-
-  const worksResponse = await getWorksList(6);
-  const worksList = worksResponse.contents;
 
   return (
     <>
@@ -33,7 +28,6 @@ export default async function Home() {
         <Service />
         <Pricing />
         <AutomationExamples />
-        <Works worksList={worksList} />
         <News newsList={newsList} />
         <Contact />
       </main>
