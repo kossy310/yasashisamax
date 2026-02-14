@@ -109,18 +109,22 @@ export function Pricing() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-white rounded-3xl p-8 md:p-10 shadow-soft"
+          className="bg-pastel-pink/30 rounded-3xl p-8 md:p-10 shadow-soft"
         >
           <h4 className="text-xl font-heading font-bold text-text-primary mb-4">
-            なぜWordPressではなく、Headless CMS＋Next.jsなのか
+            ホームページ制作、なぜWordPressじゃないの？
           </h4>
           <p className="text-text-secondary leading-relaxed mb-4">
-            WordPressは普及していますが、プラグインの脆弱性や管理画面への攻撃リスクが課題になりがちです。
-            当社では、表示部分（Next.js）と管理部分（ヘッドレスCMS）を分離し、攻撃面を減らした構成を採用しています。
-            CMSのセキュリティはサービス側が継続的に対応するため、お客様の運用負荷を抑えつつ、安心してサイトを運用いただけます。
+            WordPressは世界中で使われていますが、「セキュリティの不安」と「更新の手間」が課題です。
+            実際、ハッキングされて10万通以上のスパムメールが送信され、Google検索から除外されるといったトラブルを何度も見てきました。
+          </p>
+          <p className="text-text-secondary leading-relaxed mb-4">
+            やさしさマックスでは、「Headless CMS + Next.js」という最新の技術を使っています。
+            管理画面（CMS）と表示部分（Next.js）が完全に分かれているため、攻撃される入口を大幅に減らせます。
+            セキュリティの面倒はサービス側が対応するので、お客様の手間も削減できます。
           </p>
           <p className="text-text-secondary leading-relaxed">
-            セキュリティと表示速度の両立を重視した、中小企業にやさしい選択肢としてご提案しています。
+            「安全に、速く、長く使える」—— そんなホームページをお届けします。
           </p>
         </motion.div>
       </div>
