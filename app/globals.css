@@ -13,7 +13,7 @@
   
   /* フォント */
   --font-family-sans: var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-family-heading: var(--font-zen-maru), ui-sans-serif, system-ui, sans-serif;
+  --font-family-heading: var(--font-noto-sans), ui-sans-serif, system-ui, sans-serif;
   
   /* シャドウ */
   --shadow-soft: 0 4px 20px rgb(0 0 0 / 0.08);

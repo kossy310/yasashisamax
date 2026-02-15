@@ -33,7 +33,7 @@ export function Button({
   type = "button",
 }: ButtonProps) {
   const baseStyles =
-    "px-8 py-4 rounded-full font-medium transition-all duration-300";
+    "px-8 py-4 rounded-full font-normal transition-all duration-300";
   const combinedStyles = `${baseStyles} ${variantStyles[variant]} ${className}`;
 
   const motionProps = {

@@ -139,7 +139,7 @@ export function Header() {
                     <a
                       href={item.href}
                       onClick={(e) => handleNavClick(e, item.href)}
-                      className="block py-4 px-6 text-xl font-medium text-text-primary hover:text-pastel-pink hover:bg-ivory-dark rounded-xl transition-colors duration-300 text-center"
+                      className="block py-4 px-6 text-xl font-normal text-text-primary hover:text-pastel-pink hover:bg-ivory-dark rounded-xl transition-colors duration-300 text-center"
                     >
                       {item.label}
                     </a>

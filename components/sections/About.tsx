@@ -81,7 +81,7 @@ export function About() {
           {keywords.map((keyword, index) => (
             <m.span
               key={keyword}
-              className="px-6 py-3 bg-white rounded-full text-text-primary font-medium shadow-soft"
+              className="px-6 py-3 bg-white rounded-full text-text-primary font-normal shadow-soft"
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
@@ -102,7 +102,7 @@ export function About() {
         >
           <Link
             href="/vision"
-            className="inline-block px-8 py-4 bg-pastel-pink text-text-primary rounded-full font-medium hover:bg-opacity-80 transition-all duration-300 shadow-soft hover:shadow-soft-hover hover:-translate-y-1"
+            className="inline-block px-8 py-4 bg-pastel-pink text-text-primary rounded-full font-normal hover:bg-opacity-80 transition-all duration-300 shadow-soft hover:shadow-soft-hover hover:-translate-y-1"
           >
             やさしさマックスのビジョン
           </Link>

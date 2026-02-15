@@ -75,7 +75,7 @@ export function Pricing() {
               }}
             >
               {plan.recommended && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-pastel-pink rounded-full text-sm font-medium text-text-primary">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-pastel-pink rounded-full text-sm font-normal text-text-primary">
                   おすすめ
                 </span>
               )}

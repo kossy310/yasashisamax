@@ -1,19 +1,12 @@
 import type { Metadata } from "next";
-import { Noto_Sans_JP, Zen_Maru_Gothic } from "next/font/google";
+import { Noto_Sans_JP } from "next/font/google";
 import { FramerMotionProvider } from "@/components/providers/FramerMotionProvider";
 import "./globals.css";
 
 const notoSansJP = Noto_Sans_JP({
   variable: "--font-noto-sans",
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  display: "swap",
-});
-
-const zenMaruGothic = Zen_Maru_Gothic({
-  variable: "--font-zen-maru",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "700"],
   display: "swap",
 });
 
@@ -47,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body
-        className={`${notoSansJP.variable} ${zenMaruGothic.variable} antialiased`}
+        className={`${notoSansJP.variable} antialiased`}
       >
         <FramerMotionProvider>{children}</FramerMotionProvider>
       </body>

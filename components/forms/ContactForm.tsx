@@ -125,7 +125,7 @@ export function ContactForm() {
       <div>
         <label
           htmlFor="name"
-          className="block text-text-primary font-medium mb-2"
+          className="block text-text-primary font-normal mb-2"
         >
           お名前 <span className="text-red-500">*</span>
         </label>
@@ -144,7 +144,7 @@ export function ContactForm() {
       <div>
         <label
           htmlFor="email"
-          className="block text-text-primary font-medium mb-2"
+          className="block text-text-primary font-normal mb-2"
         >
           メールアドレス <span className="text-red-500">*</span>
         </label>
@@ -163,7 +163,7 @@ export function ContactForm() {
       <div>
         <label
           htmlFor="message"
-          className="block text-text-primary font-medium mb-2"
+          className="block text-text-primary font-normal mb-2"
         >
           お問い合わせ内容 <span className="text-red-500">*</span>
         </label>

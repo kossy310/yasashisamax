@@ -105,7 +105,7 @@ export default async function NewsDetailPage({ params }: Props) {
                 <time className="text-text-secondary text-sm">
                   {formatDate(news.publishedAt)}
                 </time>
-                <span className="px-3 py-1 bg-pastel-blue rounded-full text-text-primary text-sm font-medium">
+                <span className="px-3 py-1 bg-pastel-blue rounded-full text-text-primary text-sm font-normal">
                   {news.category}
                 </span>
               </div>

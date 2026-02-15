@@ -77,7 +77,7 @@ export function News({ newsList }: NewsProps) {
                         <time className="text-text-secondary text-sm">
                           {formatDate(news.publishedAt)}
                         </time>
-                        <span className="px-3 py-1 bg-pastel-blue rounded-full text-text-primary text-xs font-medium">
+                        <span className="px-3 py-1 bg-pastel-blue rounded-full text-text-primary text-xs font-normal">
                           {news.category}
                         </span>
                       </div>
@@ -104,7 +104,7 @@ export function News({ newsList }: NewsProps) {
             >
               <Link
                 href="/news"
-                className="inline-block px-8 py-4 bg-pastel-pink text-text-primary rounded-full font-medium hover:bg-opacity-80 transition-all duration-300 shadow-soft hover:shadow-soft-hover hover:-translate-y-1"
+                className="inline-block px-8 py-4 bg-pastel-pink text-text-primary rounded-full font-normal hover:bg-opacity-80 transition-all duration-300 shadow-soft hover:shadow-soft-hover hover:-translate-y-1"
               >
                 ニュース一覧を見る
               </Link>

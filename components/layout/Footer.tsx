@@ -34,7 +34,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-lg font-medium text-text-primary mb-4">
+            <h4 className="text-lg font-normal text-text-primary mb-4">
               サイトマップ
             </h4>
             <nav className="flex flex-col gap-2">
@@ -51,7 +51,7 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="text-lg font-medium text-text-primary mb-4">
+            <h4 className="text-lg font-normal text-text-primary mb-4">
               SNS / お問い合わせ
             </h4>
             <div className="flex flex-col gap-3">

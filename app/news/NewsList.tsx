@@ -63,7 +63,7 @@ export function NewsList({ newsList }: NewsListProps) {
                 <time className="text-text-secondary text-sm">
                   {formatDate(news.publishedAt)}
                 </time>
-                <span className="px-3 py-1 bg-pastel-blue rounded-full text-text-primary text-xs font-medium">
+                <span className="px-3 py-1 bg-pastel-blue rounded-full text-text-primary text-xs font-normal">
                   {news.category}
                 </span>
               </div>

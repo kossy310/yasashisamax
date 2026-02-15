@@ -116,7 +116,7 @@ export default async function WorksDetailPage({ params }: Props) {
                   href={work.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-pastel-pink rounded-full text-text-primary font-medium hover:bg-opacity-80 transition-all"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-pastel-pink rounded-full text-text-primary font-normal hover:bg-opacity-80 transition-all"
                 >
                   サイトを見る
                   <svg

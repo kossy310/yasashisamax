@@ -58,7 +58,7 @@ export default function VisionContent() {
                 ビジョン（実現したい未来）
               </h2>
               <div className="mb-8">
-                <p className="text-2xl md:text-3xl font-medium text-pastel-pink mb-6">
+                <p className="text-2xl md:text-3xl font-normal text-pastel-pink mb-6">
                   Digital × Gentleness = Empowerment
                 </p>
                 <p className="text-xl md:text-2xl font-bold text-text-primary mb-8">
@@ -323,13 +323,13 @@ export default function VisionContent() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href="/#contact"
-                  className="px-8 py-4 bg-pastel-pink text-text-primary rounded-full font-medium hover:bg-opacity-80 transition-all duration-300 inline-block"
+                  className="px-8 py-4 bg-pastel-pink text-text-primary rounded-full font-normal hover:bg-opacity-80 transition-all duration-300 inline-block"
                 >
                   お問い合わせ
                 </Link>
                 <Link
                   href="/"
-                  className="px-8 py-4 bg-white text-text-primary rounded-full font-medium hover:bg-opacity-80 transition-all duration-300 inline-block"
+                  className="px-8 py-4 bg-white text-text-primary rounded-full font-normal hover:bg-opacity-80 transition-all duration-300 inline-block"
                 >
                   トップページへ
                 </Link>
