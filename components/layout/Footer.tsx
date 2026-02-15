@@ -16,11 +16,17 @@ export function Footer() {
     <footer className="bg-ivory-dark py-12">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          <div>
-            <h3 className="text-xl font-heading font-bold text-text-primary mb-4">
-              やさしさマックス
-            </h3>
-            <p className="text-text-secondary text-sm">
+          <div className="flex flex-col items-center md:items-start">
+            <div className="mb-4 flex justify-center md:justify-start">
+              <Image
+                src="/logo/logo_yasashisaMax_ol.png"
+                alt="やさしさマックス"
+                width={258}
+                height={110}
+                className="h-16 sm:h-20 w-auto"
+              />
+            </div>
+            <p className="text-text-secondary text-sm text-center md:text-left">
               低予算でも、品質にこだわる。
               <br />
               Web、印刷、業務効率化まで。

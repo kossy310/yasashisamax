@@ -7,19 +7,19 @@ import { AnimatedSectionTitle } from "@/components/ui/AnimatedText";
 
 export function Contact() {
   return (
-    <section id="contact" className="py-24 bg-ivory-dark">
-      <div className="max-w-4xl mx-auto px-6">
+    <section id="contact" className="py-16 sm:py-20 md:py-24 bg-ivory-dark">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <AnimatedSectionTitle className="text-4xl md:text-5xl font-heading font-bold text-text-primary mb-6">
+          <AnimatedSectionTitle className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-text-primary mb-4 sm:mb-6">
             お問い合わせ
           </AnimatedSectionTitle>
-          <p className="text-lg text-text-secondary">
+          <p className="text-base sm:text-lg text-text-secondary px-2">
             まずは気軽に、ご相談ください。どんな小さなことでも大丈夫です。
           </p>
         </motion.div>
@@ -29,13 +29,13 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="bg-white rounded-3xl p-8 md:p-12 shadow-soft mb-8"
+          className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 shadow-soft mb-6 sm:mb-8"
         >
           <div className="text-center">
-            <h3 className="text-2xl font-heading font-bold text-text-primary mb-4">
+            <h3 className="text-xl sm:text-2xl font-heading font-bold text-text-primary mb-3 sm:mb-4">
               LINEで気軽に相談
             </h3>
-            <p className="text-text-secondary mb-6">
+            <p className="text-sm sm:text-base text-text-secondary mb-4 sm:mb-6 px-2">
               LINEからもお問い合わせいただけます。
               <br />
               お友だち追加後、お気軽にメッセージをお送りください。
@@ -51,9 +51,9 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="bg-white rounded-3xl p-8 md:p-12 shadow-soft"
+          className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 shadow-soft"
         >
-          <h3 className="text-2xl font-heading font-bold text-text-primary mb-6 text-center">
+          <h3 className="text-xl sm:text-2xl font-heading font-bold text-text-primary mb-4 sm:mb-6 text-center">
             Webフォームから送信
           </h3>
           <ContactForm />

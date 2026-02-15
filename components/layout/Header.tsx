@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 
 const navItems = [
   { label: "トップ", href: "/#mv" },
@@ -36,8 +37,15 @@ export function Header() {
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-2xl font-heading font-bold text-text-primary">
-            やさしさマックス
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo/logo_yasashisaMax3_ol.png"
+              alt="やさしさマックス"
+              width={200}
+              height={32}
+              priority
+              className="h-8 w-auto"
+            />
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -103,16 +111,15 @@ export function Header() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mb-12"
+              className="mb-12 flex justify-center"
             >
-              <div className="w-24 h-24 bg-pastel-pink rounded-full flex items-center justify-center shadow-soft">
-                <span className="text-3xl font-heading font-bold text-text-primary">
-                  優
-                </span>
-              </div>
-              <p className="text-center mt-3 text-lg font-heading font-bold text-text-primary">
-                やさしさマックス
-              </p>
+              <Image
+                src="/logo/logo_yasashisaMax_ol.png"
+                alt="やさしさマックス"
+                width={258}
+                height={110}
+                className="h-20 w-auto"
+              />
             </motion.div>
 
             {/* ナビゲーション */}
