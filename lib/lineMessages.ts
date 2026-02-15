@@ -117,14 +117,15 @@ export function getPricingCarousel(): {
   };
 }
 
-/** 返信メッセージ：テキストまたはテンプレート（カルーセル） */
+/** 返信メッセージ：テキスト／テンプレート（カルーセル）／返信なし */
 export type ReplyMessage =
   | string
-  | ReturnType<typeof getPricingCarousel>;
+  | ReturnType<typeof getPricingCarousel>
+  | null;
 
 /**
  * 選択肢（1〜6）または「メニュー」に応じた返信を取得
- * 「メニュー」の場合はカルーセル、それ以外はテキスト（共通フッター付き）
+ * それ以外（自由文）のときは null を返し、自動返信しない
  */
 export function getReplyMessage(choice: string): ReplyMessage {
   const text = choice.trim();
@@ -137,5 +138,5 @@ export function getReplyMessage(choice: string): ReplyMessage {
     return MESSAGES[text] + FOOTER;
   }
 
-  return DEFAULT_MESSAGE;
+  return null;
 }

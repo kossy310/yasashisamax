@@ -34,6 +34,8 @@ export async function POST(request: Request) {
         if (!text) continue; // textが存在しない場合はスキップ
         const replyMessage = getReplyMessage(text);
 
+        if (replyMessage === null) continue; // 自由文のときは返信しない
+
         const message =
           typeof replyMessage === "string"
             ? { type: "text" as const, text: replyMessage }
