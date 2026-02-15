@@ -60,12 +60,78 @@ HP制作に加え、問い合わせのLINE通知やスプレッドシート自�
 
 const DEFAULT_MESSAGE = "1〜6の数字でお選びください。";
 
+const BASE_URL = "https://www.yasashisa-max.com";
+
+/** 料金プランカルーセル用のカラムデータ */
+const PRICING_CAROUSEL_COLUMNS = [
+  {
+    title: "🌐 ライトホームページプラン",
+    text: "初期100,000円・月額11,000円（税抜）。名刺代わりの1ページサイト。",
+    actions: [
+      { type: "uri" as const, label: "詳しく見る", uri: `${BASE_URL}/#pricing` },
+      { type: "uri" as const, label: "お問い合わせ", uri: `${BASE_URL}/#contact` },
+    ],
+  },
+  {
+    title: "📊 ビジネス成長サポートプラン おすすめ",
+    text: "初期150,000円・月額16,500円（税抜）。CMS＋月1回解析レポート。",
+    actions: [
+      { type: "uri" as const, label: "詳しく見る", uri: `${BASE_URL}/#pricing` },
+      { type: "uri" as const, label: "お問い合わせ", uri: `${BASE_URL}/#contact` },
+    ],
+  },
+  {
+    title: "🚀 DX伴走パック",
+    text: "初期300,000円〜・月額33,000円〜（税抜）。業務自動化＋伴走支援。",
+    actions: [
+      { type: "uri" as const, label: "詳しく見る", uri: `${BASE_URL}/#pricing` },
+      { type: "uri" as const, label: "お問い合わせ", uri: `${BASE_URL}/#contact` },
+    ],
+  },
+];
+
+/** 料金プランカルーセルテンプレートメッセージを返す（メニュー用） */
+export function getPricingCarousel(): {
+  type: "template";
+  altText: string;
+  template: {
+    type: "carousel";
+    columns: Array<{
+      title: string;
+      text: string;
+      actions: Array<{ type: "uri"; label: string; uri: string }>;
+    }>;
+  };
+} {
+  return {
+    type: "template",
+    altText: "料金プラン一覧。Webサイトでご確認ください。",
+    template: {
+      type: "carousel",
+      columns: PRICING_CAROUSEL_COLUMNS.map((col) => ({
+        title: col.title,
+        text: col.text,
+        actions: col.actions,
+      })),
+    },
+  };
+}
+
+/** 返信メッセージ：テキストまたはテンプレート（カルーセル） */
+export type ReplyMessage =
+  | string
+  | ReturnType<typeof getPricingCarousel>;
+
 /**
- * 選択肢（1〜6）に応じた返信メッセージを取得
- * 全返信に共通フッターを付与
+ * 選択肢（1〜6）または「メニュー」に応じた返信を取得
+ * 「メニュー」の場合はカルーセル、それ以外はテキスト（共通フッター付き）
  */
-export function getReplyMessage(choice: string): string {
+export function getReplyMessage(choice: string): ReplyMessage {
   const text = choice.trim();
+
+  if (text === "メニュー" || text.toLowerCase() === "menu") {
+    return getPricingCarousel();
+  }
 
   if (MESSAGES[text]) {
     return MESSAGES[text] + FOOTER;
