@@ -73,7 +73,15 @@ export async function getAllWorksIds(): Promise<string[]> {
     });
     return response.contents.map((works) => works.id);
   } catch (error) {
-    console.error("Failed to fetch all works IDs:", error);
+    const is404 =
+      error instanceof Error && error.message.includes("404");
+    if (is404) {
+      console.log(
+        "Works API not found or empty (404), skipping static params."
+      );
+    } else {
+      console.error("Failed to fetch all works IDs:", error);
+    }
     return [];
   }
 }
