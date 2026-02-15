@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 type AnimatedTextProps = {
   text: string;
@@ -10,7 +10,7 @@ type AnimatedTextProps = {
 };
 
 /**
- * 一文字ずつフェードインするテキストアニメーション
+ * 一文字ずつフェードインするテキストアニメーション（CSS ベースでメインスレッド負荷を軽減）
  */
 export function AnimatedText({
   text,
@@ -20,48 +20,21 @@ export function AnimatedText({
 }: AnimatedTextProps) {
   const letters = Array.from(text);
 
-  const container = {
-    hidden: { opacity: 0 },
-    visible: (i = 1) => ({
-      opacity: 1,
-      transition: { staggerChildren: duration, delayChildren: delay },
-    }),
-  };
-
-  const child = {
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring" as const,
-        damping: 12,
-        stiffness: 100,
-      },
-    },
-    hidden: {
-      opacity: 0,
-      y: 20,
-    },
-  };
-
   return (
-    <motion.span
-      className={className}
-      variants={container}
-      initial="hidden"
-      animate="visible"
-      style={{ display: "inline-block" }}
-    >
+    <span className={className} style={{ display: "inline-block" }}>
       {letters.map((letter, index) => (
-        <motion.span
+        <span
           key={`${letter}-${index}`}
-          variants={child}
-          style={{ display: "inline-block", whiteSpace: letter === " " ? "pre" : "normal" }}
+          className="animate-letter-in"
+          style={{
+            animationDelay: `${delay + index * duration}s`,
+            whiteSpace: letter === " " ? "pre" : "normal",
+          }}
         >
           {letter === " " ? "\u00A0" : letter}
-        </motion.span>
+        </span>
       ))}
-    </motion.span>
+    </span>
   );
 }
 
@@ -78,7 +51,7 @@ export function AnimatedSectionTitle({
   className = "",
 }: AnimatedSectionTitleProps) {
   return (
-    <motion.h2
+    <m.h2
       className={className}
       initial={{ opacity: 0, y: 50, scale: 0.95 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -89,6 +62,6 @@ export function AnimatedSectionTitle({
       }}
     >
       {children}
-    </motion.h2>
+    </m.h2>
   );
 }

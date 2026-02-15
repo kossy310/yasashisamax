@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "事業ビジョン - やさしさマックス",
     description:
       "デジタルの力と人のやさしさで、すべての中小企業を主役に。やさしさマックスが目指す未来と使命、アプローチ、バリューをご紹介します。",
-    images: ["/ogp.png"],
+    images: ["/ogp.jpg"],
     locale: "ja_JP",
     type: "website",
   },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     title: "事業ビジョン - やさしさマックス",
     description:
       "デジタルの力と人のやさしさで、すべての中小企業を主役に。やさしさマックスが目指す未来と使命、アプローチ、バリューをご紹介します。",
-    images: ["/ogp.png"],
+    images: ["/ogp.jpg"],
   },
 };
 

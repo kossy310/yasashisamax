@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -29,7 +29,7 @@ export function Header() {
   };
 
   return (
-    <motion.header
+    <m.header
       className="fixed top-0 left-0 right-0 z-50 bg-ivory/90 backdrop-blur-md shadow-soft"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -98,7 +98,7 @@ export function Header() {
       {/* モバイルメニュー */}
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div
+          <m.div
             key="mobile-menu"
             className="fixed inset-0 z-[100] md:hidden bg-pastel-pink flex flex-col items-center justify-center h-screen w-screen"
             initial={{ opacity: 0 }}
@@ -107,7 +107,7 @@ export function Header() {
             transition={{ duration: 0.7, ease: "easeInOut" }}
           >
             {/* ロゴ */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -120,13 +120,13 @@ export function Header() {
                 height={110}
                 className="h-20 w-auto"
               />
-            </motion.div>
+            </m.div>
 
             {/* ナビゲーション */}
             <nav className="w-full max-w-sm px-6">
               <ul className="flex flex-col gap-1">
                 {navItems.map((item, index) => (
-                  <motion.li
+                  <m.li
                     key={item.href}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -143,13 +143,13 @@ export function Header() {
                     >
                       {item.label}
                     </a>
-                  </motion.li>
+                  </m.li>
                 ))}
               </ul>
             </nav>
 
             {/* 閉じるボタン */}
-            <motion.button
+            <m.button
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.8 }}
@@ -168,10 +168,10 @@ export function Header() {
               >
                 <path d="M6 18L18 6M6 6l12 12"></path>
               </svg>
-            </motion.button>
-          </motion.div>
+            </m.button>
+          </m.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </m.header>
   );
 }

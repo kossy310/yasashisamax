@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { AnimatedSectionTitle } from "@/components/ui/AnimatedText";
 
 const examples = [
@@ -40,7 +40,7 @@ export function AutomationExamples() {
   return (
     <section id="automation-examples" className="py-24 bg-ivory">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -53,11 +53,11 @@ export function AutomationExamples() {
           <p className="text-lg text-text-secondary max-w-2xl mx-auto">
             日々の手間を、自動化で解決。導入しやすい仕組みづくりをお手伝いします。
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {examples.map((example, index) => (
-            <motion.div
+            <m.div
               key={example.title}
               className="bg-white rounded-3xl p-8 shadow-soft"
               initial={{ opacity: 0, y: 30 }}
@@ -87,11 +87,11 @@ export function AutomationExamples() {
               <p className="text-text-secondary text-sm leading-relaxed">
                 {example.detail}
               </p>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
-        <motion.p
+        <m.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -100,7 +100,7 @@ export function AutomationExamples() {
         >
           上記は一例です。現在の業務フローやお使いのツールをヒアリングし、
           「どこを自動化すると一番ラクになるか」を一緒に設計し、仕組みの構築まで伴走します。
-        </motion.p>
+        </m.p>
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { AnimatedSectionTitle } from "@/components/ui/AnimatedText";
@@ -18,7 +18,7 @@ export function About() {
   return (
     <section id="about" className="py-24 bg-ivory-dark">
       <div className="max-w-6xl mx-auto px-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -35,10 +35,10 @@ export function About() {
             <br />
             予算が限られていても、妥協せずに。小さく始めて、着実に成長するお手伝いをします。
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center mb-12">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -52,9 +52,9 @@ export function About() {
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -68,10 +68,10 @@ export function About() {
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
             />
-          </motion.div>
+          </m.div>
         </div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -79,7 +79,7 @@ export function About() {
           className="flex flex-wrap justify-center gap-3 mb-12"
         >
           {keywords.map((keyword, index) => (
-            <motion.span
+            <m.span
               key={keyword}
               className="px-6 py-3 bg-white rounded-full text-text-primary font-medium shadow-soft"
               initial={{ opacity: 0, scale: 0.8 }}
@@ -89,11 +89,11 @@ export function About() {
               whileHover={{ scale: 1.05, y: -2 }}
             >
               {keyword}
-            </motion.span>
+            </m.span>
           ))}
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -106,7 +106,7 @@ export function About() {
           >
             やさしさマックスのビジョン
           </Link>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { AnimatedSectionTitle } from "@/components/ui/AnimatedText";
 
 const plans = [
@@ -43,7 +43,7 @@ export function Pricing() {
   return (
     <section id="pricing" className="py-24 bg-ivory-dark">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -56,11 +56,11 @@ export function Pricing() {
           <p className="text-lg text-text-secondary max-w-2xl mx-auto">
             まずは小さく、始めやすく。必要に応じて、段階的に拡張できるプランです。
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {plans.map((plan, index) => (
-            <motion.div
+            <m.div
               key={plan.name}
               className={`relative bg-white rounded-3xl p-8 shadow-soft ${
                 plan.recommended ? "ring-2 ring-pastel-pink ring-offset-4 ring-offset-ivory-dark" : ""
@@ -100,11 +100,11 @@ export function Pricing() {
                 </p>
                 <p className="text-text-secondary text-xs mt-2">{plan.note}</p>
               </div>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -126,7 +126,7 @@ export function Pricing() {
           <p className="text-text-secondary leading-relaxed">
             「安全に、速く、長く使える」—— そんなホームページをお届けします。
           </p>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

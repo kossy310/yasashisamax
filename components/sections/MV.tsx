@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { AnimatedText } from "@/components/ui/AnimatedText";
@@ -45,7 +45,7 @@ export function MV() {
       </div>
 
       {/* 背景装飾 */}
-      <motion.div
+      <m.div
         className="absolute top-20 right-10 w-64 h-64 rounded-full bg-pastel-pink/30 blur-3xl z-[1]"
         animate={{
           scale: [1, 1.2, 1],
@@ -57,7 +57,7 @@ export function MV() {
           ease: "easeInOut",
         }}
       />
-      <motion.div
+      <m.div
         className="absolute bottom-20 left-10 w-80 h-80 rounded-full bg-pastel-blue/30 blur-3xl z-[1]"
         animate={{
           scale: [1, 1.3, 1],
@@ -85,7 +85,7 @@ export function MV() {
             <AnimatedText text="少ない予算で、ちゃんと作る。" delay={0.8} />
           </h1>
 
-          <motion.p
+          <m.p
             className="text-sm sm:text-base md:text-xl text-[#4a5568] mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed px-2"
             style={{
               textShadow:
@@ -100,9 +100,9 @@ export function MV() {
             HP制作は最短7日、名刺・印刷・動画も低価格で。
             <br />
             まずは小さく始めることから、一緒に進めましょう。
-          </motion.p>
+          </m.p>
 
-          <motion.div
+          <m.div
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             style={{
               filter:
@@ -118,7 +118,7 @@ export function MV() {
             <Button variant="ghost" href="#contact">
               Webフォームから連絡
             </Button>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

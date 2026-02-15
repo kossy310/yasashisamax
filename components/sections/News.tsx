@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import type { News } from "@/types/news";
 import { AnimatedSectionTitle } from "@/components/ui/AnimatedText";
 
@@ -44,7 +44,7 @@ export function News({ newsList }: NewsProps) {
           <>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
               {displayList.map((news, index) => (
-                <motion.div
+                <m.div
                   key={news.id}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -91,11 +91,11 @@ export function News({ newsList }: NewsProps) {
                       </p>
                     </div>
                   </Link>
-                </motion.div>
+                </m.div>
               ))}
             </div>
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -108,7 +108,7 @@ export function News({ newsList }: NewsProps) {
               >
                 ニュース一覧を見る
               </Link>
-            </motion.div>
+            </m.div>
           </>
         ) : (
           <p className="text-center text-text-secondary">

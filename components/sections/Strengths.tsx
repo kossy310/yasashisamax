@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { AnimatedSectionTitle } from "@/components/ui/AnimatedText";
 
 const strengths = [
@@ -28,7 +28,7 @@ export function Strengths() {
   return (
     <section id="strengths" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -41,11 +41,11 @@ export function Strengths() {
           <p className="text-lg text-text-secondary">
             選ばれる理由は、この3つ。
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {strengths.map((strength, index) => (
-            <motion.div
+            <m.div
               key={strength.title}
               className="bg-ivory-dark rounded-3xl p-8 shadow-soft"
               initial={{ opacity: 0, y: 30 }}
@@ -64,7 +64,7 @@ export function Strengths() {
               <p className="text-text-secondary leading-relaxed">
                 {strength.description}
               </p>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>

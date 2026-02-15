@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { AnimatedSectionTitle } from "@/components/ui/AnimatedText";
 
 const services = [
@@ -40,7 +40,7 @@ export function Service() {
   return (
     <section id="service" className="py-24 bg-ivory">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -53,9 +53,9 @@ export function Service() {
           <p className="text-lg text-text-secondary">
             あなたのビジネスに必要なものを、手の届く価格で。
           </p>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -66,7 +66,7 @@ export function Service() {
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <motion.div
+              <m.div
                 key={service.title}
                 className="bg-white rounded-3xl p-8 shadow-soft min-w-0 flex flex-col"
                 initial={{ opacity: 0, y: 30 }}
@@ -85,10 +85,10 @@ export function Service() {
                 <p className="text-text-secondary leading-relaxed flex-1">
                   {service.description}
                 </p>
-              </motion.div>
+              </m.div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

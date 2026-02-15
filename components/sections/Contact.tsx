@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { AnimatedSectionTitle } from "@/components/ui/AnimatedText";
@@ -9,7 +9,7 @@ export function Contact() {
   return (
     <section id="contact" className="py-16 sm:py-20 md:py-24 bg-ivory-dark">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -22,9 +22,9 @@ export function Contact() {
           <p className="text-base sm:text-lg text-text-secondary px-2">
             まずは気軽に、ご相談ください。どんな小さなことでも大丈夫です。
           </p>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -44,9 +44,9 @@ export function Contact() {
               LINE公式アカウントを追加
             </Button>
           </div>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -57,7 +57,7 @@ export function Contact() {
             Webフォームから送信
           </h3>
           <ContactForm />
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

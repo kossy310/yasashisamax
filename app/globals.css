@@ -90,3 +90,21 @@ body {
 .hover\:bg-opacity-80:hover {
   --tw-bg-opacity: 0.8;
 }
+
+/* 一文字ずつフェードイン（AnimatedText用） */
+@keyframes letter-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-letter-in {
+  opacity: 0;
+  animation: letter-fade-in 0.5s ease-out forwards;
+  display: inline-block;
+}

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ReactNode } from "react";
 
 type ButtonVariant = "primary" | "secondary" | "ghost" | "line";
@@ -44,25 +44,25 @@ export function Button({
 
   if (href) {
     return (
-      <motion.a
+      <m.a
         href={href}
         className={combinedStyles}
         {...motionProps}
         style={{ display: "inline-block" }}
       >
         {children}
-      </motion.a>
+      </m.a>
     );
   }
 
   return (
-    <motion.button
+    <m.button
       type={type}
       onClick={onClick}
       className={combinedStyles}
       {...motionProps}
     >
       {children}
-    </motion.button>
+    </m.button>
   );
 }

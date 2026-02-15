@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/layout/Header";
@@ -26,7 +26,7 @@ export default function VisionContent() {
             <div className="absolute inset-0 bg-gradient-to-b from-ivory/90 via-ivory/80 to-ivory-dark/95" />
           </div>
           <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -40,14 +40,14 @@ export default function VisionContent() {
               <p className="text-lg text-text-secondary">
                 やさしさマックスが目指す未来
               </p>
-            </motion.div>
+            </m.div>
           </div>
         </section>
 
         {/* メインビジョン */}
         <section className="py-24 bg-white">
           <div className="max-w-5xl mx-auto px-6">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -70,14 +70,14 @@ export default function VisionContent() {
               <p className="text-lg text-text-secondary leading-relaxed max-w-3xl mx-auto">
                 急速に変化するデジタル社会において、技術は「格差」を生むものではなく、誰もが「可能性」を広げるための道具であるべきです。私たちは、ITという冷淡に感じられがちな手段に「人の体温」を吹き込み、規模を問わずすべての企業が明日への希望を持てる社会を実現します。
               </p>
-            </motion.div>
+            </m.div>
           </div>
         </section>
 
         {/* ミッション */}
         <section className="py-24 bg-ivory-dark">
           <div className="max-w-5xl mx-auto px-6">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -94,7 +94,7 @@ export default function VisionContent() {
               </p>
 
               <div className="grid md:grid-cols-2 gap-8 mb-12">
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -107,9 +107,9 @@ export default function VisionContent() {
                   <p className="text-text-secondary leading-relaxed">
                     専門知識の欠如やコストの壁により、便利なツールを使いこなせない。
                   </p>
-                </motion.div>
+                </m.div>
 
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -122,20 +122,20 @@ export default function VisionContent() {
                   <p className="text-text-secondary leading-relaxed">
                     時代のスピードについていけず、旧来のやり方から抜け出せない。
                   </p>
-                </motion.div>
+                </m.div>
               </div>
 
               <p className="text-lg text-text-secondary leading-relaxed text-center max-w-3xl mx-auto">
                 私たちは、この「不自由」を「やさしさ」という独自の伴走スタイルで解消します。ITやAIを「難解な敵」から「頼れる相棒」へと変えることが私たちの使命です。
               </p>
-            </motion.div>
+            </m.div>
           </div>
         </section>
 
         {/* アプローチ */}
         <section className="py-24 bg-white">
           <div className="max-w-5xl mx-auto px-6">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -156,7 +156,7 @@ export default function VisionContent() {
               </p>
 
               <div className="grid md:grid-cols-3 gap-8">
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -169,9 +169,9 @@ export default function VisionContent() {
                   <p className="text-text-secondary leading-relaxed">
                     高度な技術（Next.jsやHeadless CMS等）を、誰にでもわかる言葉で届けます。
                   </p>
-                </motion.div>
+                </m.div>
 
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -184,9 +184,9 @@ export default function VisionContent() {
                   <p className="text-text-secondary leading-relaxed">
                     提案して終わりではなく、成果が出るまで二人三脚で歩みます。
                   </p>
-                </motion.div>
+                </m.div>
 
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -199,16 +199,16 @@ export default function VisionContent() {
                   <p className="text-text-secondary leading-relaxed">
                     リスクを最小限に抑え、小さく始めて確実に成功体験を積み上げます。
                   </p>
-                </motion.div>
+                </m.div>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </section>
 
         {/* バリュー */}
         <section className="py-24 bg-ivory-dark">
           <div className="max-w-5xl mx-auto px-6">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -222,7 +222,7 @@ export default function VisionContent() {
               </p>
 
               <div className="space-y-8">
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -238,9 +238,9 @@ export default function VisionContent() {
                   <p className="text-text-secondary leading-relaxed">
                     お客様の「困った」に誰よりも深く共感し、自分事として考え抜きます。
                   </p>
-                </motion.div>
+                </m.div>
 
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -256,9 +256,9 @@ export default function VisionContent() {
                   <p className="text-text-secondary leading-relaxed">
                     専門用語を翻訳し、誰もが納得できる透明性の高いコミュニケーションを徹底します。
                   </p>
-                </motion.div>
+                </m.div>
 
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -274,16 +274,16 @@ export default function VisionContent() {
                   <p className="text-text-secondary leading-relaxed">
                     導入の壁を極限まで低くし、得られる効果を最大化（マックス）させる方法を提案します。
                   </p>
-                </motion.div>
+                </m.div>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </section>
 
         {/* 社名の由来 */}
         <section className="py-24 bg-white">
           <div className="max-w-5xl mx-auto px-6">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -304,14 +304,14 @@ export default function VisionContent() {
                   その「やさしさ」を最大（マックス）限に発揮することで、ITの恩恵をすべての企業に届けたい。そんな想いがこの名前に込められています。
                 </p>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </section>
 
         {/* CTAセクション */}
         <section className="py-24 bg-ivory-dark">
           <div className="max-w-4xl mx-auto px-6 text-center">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -334,7 +334,7 @@ export default function VisionContent() {
                   トップページへ
                 </Link>
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </section>
       </main>

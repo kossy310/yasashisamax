@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP, Zen_Maru_Gothic } from "next/font/google";
+import { FramerMotionProvider } from "@/components/providers/FramerMotionProvider";
 import "./globals.css";
 
 const notoSansJP = Noto_Sans_JP({
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     title: "やさしさマックス - HPも名刺も業務の自動化も。少ない予算で、ちゃんと作る。",
     description:
       "やさしさマックスでHPも名刺も業務の自動化も。少ない予算で、ちゃんと作る。HP制作は最短7日、名刺・印刷・動画も低価格で承ります。",
-    images: ["/ogp.png"],
+    images: ["/ogp.jpg"],
     locale: "ja_JP",
     type: "website",
   },
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     title: "やさしさマックス - HPも名刺も業務の自動化も。少ない予算で、ちゃんと作る。",
     description:
       "やさしさマックスでHPも名刺も業務の自動化も。少ない予算で、ちゃんと作る。HP制作は最短7日、名刺・印刷・動画も低価格で承ります。",
-    images: ["/ogp.png"],
+    images: ["/ogp.jpg"],
   },
 };
 
@@ -48,7 +49,7 @@ export default function RootLayout({
       <body
         className={`${notoSansJP.variable} ${zenMaruGothic.variable} antialiased`}
       >
-        {children}
+        <FramerMotionProvider>{children}</FramerMotionProvider>
       </body>
     </html>
   );
