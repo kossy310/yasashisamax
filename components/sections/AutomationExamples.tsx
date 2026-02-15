@@ -1,7 +1,7 @@
 "use client";
 
-import { m } from "framer-motion";
 import { AnimatedSectionTitle } from "@/components/ui/AnimatedText";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const examples = [
   {
@@ -37,15 +37,16 @@ const examples = [
 ];
 
 export function AutomationExamples() {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollReveal();
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollReveal();
+  const { ref: noteRef, isVisible: noteVisible } = useScrollReveal();
+
   return (
     <section id="automation-examples" className="py-24 bg-ivory">
       <div className="max-w-7xl mx-auto px-6">
-        <m.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+        <div
+          ref={titleRef}
+          className={`text-center mb-16 ${titleVisible ? "animate-fade-up" : "scroll-hidden"}`}
         >
           <AnimatedSectionTitle className="text-4xl md:text-5xl font-heading font-bold text-text-primary mb-6">
             業務の自動化事例
@@ -53,21 +54,14 @@ export function AutomationExamples() {
           <p className="text-lg text-text-secondary max-w-2xl mx-auto">
             日々の手間を、自動化で解決。導入しやすい仕組みづくりをお手伝いします。
           </p>
-        </m.div>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
           {examples.map((example, index) => (
-            <m.div
+            <div
               key={example.title}
-              className="bg-white rounded-3xl p-8 shadow-soft"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 * index }}
-              whileHover={{
-                y: -8,
-                boxShadow: "0 12px 40px rgba(0, 0, 0, 0.12)",
-              }}
+              className={`bg-white rounded-3xl p-8 shadow-soft hover-lift ${cardsVisible ? "animate-fade-up" : "scroll-hidden"}`}
+              style={{ animationDelay: `${0.1 * index}s`, animationFillMode: "both" }}
             >
               <div className="text-4xl mb-4">{example.icon}</div>
               <h3 className="text-xl font-heading font-bold text-text-primary mb-4">
@@ -75,10 +69,7 @@ export function AutomationExamples() {
               </h3>
               <ul className="space-y-2 mb-4">
                 {example.items.map((item) => (
-                  <li
-                    key={item}
-                    className="text-text-secondary text-sm flex items-start gap-2"
-                  >
+                  <li key={item} className="text-text-secondary text-sm flex items-start gap-2">
                     <span className="text-pastel-pink mt-0.5">・</span>
                     <span>{item}</span>
                   </li>
@@ -87,20 +78,17 @@ export function AutomationExamples() {
               <p className="text-text-secondary text-sm leading-relaxed">
                 {example.detail}
               </p>
-            </m.div>
+            </div>
           ))}
         </div>
 
-        <m.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center text-text-secondary max-w-2xl mx-auto"
+        <p
+          ref={noteRef}
+          className={`text-center text-text-secondary max-w-2xl mx-auto ${noteVisible ? "animate-fade-up" : "scroll-hidden"}`}
         >
           上記は一例です。現在の業務フローやお使いのツールをヒアリングし、
           「どこを自動化すると一番ラクになるか」を一緒に設計し、仕組みの構築まで伴走します。
-        </m.p>
+        </p>
       </div>
     </section>
   );

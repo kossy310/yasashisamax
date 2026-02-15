@@ -1,20 +1,21 @@
 "use client";
 
-import { m } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { AnimatedSectionTitle } from "@/components/ui/AnimatedText";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 export function Contact() {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollReveal();
+  const { ref: lineRef, isVisible: lineVisible } = useScrollReveal();
+  const { ref: formRef, isVisible: formVisible } = useScrollReveal();
+
   return (
     <section id="contact" className="py-16 sm:py-20 md:py-24 bg-ivory-dark">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        <m.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-12 sm:mb-16"
+        <div
+          ref={titleRef}
+          className={`text-center mb-12 sm:mb-16 ${titleVisible ? "animate-fade-up" : "scroll-hidden"}`}
         >
           <AnimatedSectionTitle className="text-3xl sm:text-4xl md:text-5xl font-heading font-bold text-text-primary mb-4 sm:mb-6">
             お問い合わせ
@@ -22,14 +23,12 @@ export function Contact() {
           <p className="text-base sm:text-lg text-text-secondary px-2">
             まずは気軽に、ご相談ください。どんな小さなことでも大丈夫です。
           </p>
-        </m.div>
+        </div>
 
-        <m.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 shadow-soft mb-6 sm:mb-8"
+        <div
+          ref={lineRef}
+          className={`bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 shadow-soft mb-6 sm:mb-8 ${lineVisible ? "animate-fade-up" : "scroll-hidden"}`}
+          style={{ animationDelay: "0.2s", animationFillMode: "both" }}
         >
           <div className="text-center">
             <h3 className="text-xl sm:text-2xl font-heading font-bold text-text-primary mb-3 sm:mb-4">
@@ -44,20 +43,18 @@ export function Contact() {
               LINE公式アカウントを追加
             </Button>
           </div>
-        </m.div>
+        </div>
 
-        <m.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 shadow-soft"
+        <div
+          ref={formRef}
+          className={`bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 shadow-soft ${formVisible ? "animate-fade-up" : "scroll-hidden"}`}
+          style={{ animationDelay: "0.4s", animationFillMode: "both" }}
         >
           <h3 className="text-xl sm:text-2xl font-heading font-bold text-text-primary mb-4 sm:mb-6 text-center">
             Webフォームから送信
           </h3>
           <ContactForm />
-        </m.div>
+        </div>
       </div>
     </section>
   );

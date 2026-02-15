@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { m } from "framer-motion";
 import type { News } from "@/types/news";
 import { AnimatedSectionTitle } from "@/components/ui/AnimatedText";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 type NewsProps = {
   newsList: News[];
@@ -17,6 +17,9 @@ function getExcerpt(html: string, maxLength = 100): string {
 }
 
 export function News({ newsList }: NewsProps) {
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollReveal();
+  const { ref: linkRef, isVisible: linkVisible } = useScrollReveal();
+
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
     return date.toLocaleDateString("ja-JP", {
@@ -42,20 +45,17 @@ export function News({ newsList }: NewsProps) {
 
         {displayList.length > 0 ? (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
               {displayList.map((news, index) => (
-                <m.div
+                <div
                   key={news.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: 0.1 * index }}
+                  className={cardsVisible ? "animate-fade-up" : "scroll-hidden"}
+                  style={{ animationDelay: `${0.1 * index}s`, animationFillMode: "both" }}
                 >
                   <Link
                     href={`/news/${news.id}`}
                     className="block bg-white rounded-3xl overflow-hidden shadow-soft hover:shadow-soft-hover transition-all duration-300 hover:-translate-y-2 h-full"
                   >
-                    {/* サムネイル */}
                     <div className="relative aspect-[16/9] bg-ivory">
                       {news.eyecatch ? (
                         <Image
@@ -71,7 +71,6 @@ export function News({ newsList }: NewsProps) {
                         </div>
                       )}
                     </div>
-
                     <div className="p-6">
                       <div className="flex items-center gap-3 mb-3">
                         <time className="text-text-secondary text-sm">
@@ -81,26 +80,21 @@ export function News({ newsList }: NewsProps) {
                           {news.category}
                         </span>
                       </div>
-
                       <h3 className="text-lg font-heading font-bold text-text-primary mb-3 line-clamp-2">
                         {news.title}
                       </h3>
-
                       <p className="text-text-secondary text-sm leading-relaxed line-clamp-3">
                         {getExcerpt(news.body, 100)}
                       </p>
                     </div>
                   </Link>
-                </m.div>
+                </div>
               ))}
             </div>
 
-            <m.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center"
+            <div
+              ref={linkRef}
+              className={`text-center ${linkVisible ? "animate-fade-up" : "scroll-hidden"}`}
             >
               <Link
                 href="/news"
@@ -108,7 +102,7 @@ export function News({ newsList }: NewsProps) {
               >
                 ニュース一覧を見る
               </Link>
-            </m.div>
+            </div>
           </>
         ) : (
           <p className="text-center text-text-secondary">

@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { m, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -15,6 +14,7 @@ const navItems = [
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuReady, setMenuReady] = useState(false);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     const hash = href.includes("#") ? href.split("#")[1] : null;
@@ -28,13 +28,32 @@ export function Header() {
     setIsMenuOpen(false);
   };
 
+  const openMenu = useCallback(() => {
+    setIsMenuOpen(true);
+    // 少し遅らせてアニメーション用クラスを付与
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setMenuReady(true));
+    });
+  }, []);
+
+  const closeMenu = useCallback(() => {
+    setMenuReady(false);
+    // フェードアウト後に DOM から削除
+    setTimeout(() => setIsMenuOpen(false), 400);
+  }, []);
+
+  // メニュー表示中は body スクロールを無効に
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [isMenuOpen]);
+
   return (
-    <m.header
-      className="fixed top-0 left-0 right-0 z-50 bg-ivory/90 backdrop-blur-md shadow-soft"
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 bg-ivory/90 backdrop-blur-md shadow-soft animate-slide-down">
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center">
@@ -63,115 +82,78 @@ export function Header() {
 
           <button
             className="md:hidden text-text-primary p-2 -m-2"
-            aria-label={isMenuOpen ? "メニューを閉じる" : "メニューを開く"}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="メニューを開く"
+            onClick={openMenu}
           >
-            {isMenuOpen ? (
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            ) : (
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M4 6h16M4 12h16M4 18h16"></path>
-              </svg>
-            )}
+            <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
           </button>
         </div>
       </div>
 
-      {/* モバイルメニュー */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <m.div
-            key="mobile-menu"
-            className="fixed inset-0 z-[100] md:hidden bg-pastel-pink flex flex-col items-center justify-center h-screen w-screen"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.7, ease: "easeInOut" }}
+      {/* モバイルメニュー（CSS トランジション） */}
+      {isMenuOpen && (
+        <div
+          className="fixed inset-0 z-[100] md:hidden bg-pastel-pink flex flex-col items-center justify-center h-screen w-screen menu-overlay"
+          style={{ opacity: menuReady ? 1 : 0 }}
+        >
+          {/* ロゴ */}
+          <div
+            className="mb-12 flex justify-center transition-all duration-500"
+            style={{
+              opacity: menuReady ? 1 : 0,
+              transform: menuReady ? "translateY(0)" : "translateY(-20px)",
+              transitionDelay: "0.2s",
+            }}
           >
-            {/* ロゴ */}
-            <m.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="mb-12 flex justify-center"
-            >
-              <Image
-                src="/logo/logo_yasashisaMax_ol.png"
-                alt="やさしさマックス"
-                width={258}
-                height={110}
-                className="h-20 w-auto"
-              />
-            </m.div>
+            <Image
+              src="/logo/logo_yasashisaMax_ol.png"
+              alt="やさしさマックス"
+              width={258}
+              height={110}
+              className="h-20 w-auto"
+            />
+          </div>
 
-            {/* ナビゲーション */}
-            <nav className="w-full max-w-sm px-6">
-              <ul className="flex flex-col gap-1">
-                {navItems.map((item, index) => (
-                  <m.li
-                    key={item.href}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 0.4 + index * 0.1,
-                      ease: "easeOut",
-                    }}
+          {/* ナビゲーション */}
+          <nav className="w-full max-w-sm px-6">
+            <ul className="flex flex-col gap-1">
+              {navItems.map((item, index) => (
+                <li
+                  key={item.href}
+                  className="transition-all duration-500"
+                  style={{
+                    opacity: menuReady ? 1 : 0,
+                    transform: menuReady ? "translateX(0)" : "translateX(-20px)",
+                    transitionDelay: `${0.3 + index * 0.1}s`,
+                  }}
+                >
+                  <a
+                    href={item.href}
+                    onClick={(e) => handleNavClick(e, item.href)}
+                    className="block py-4 px-6 text-xl font-normal text-text-primary hover:text-pastel-pink hover:bg-ivory-dark rounded-xl transition-colors duration-300 text-center"
                   >
-                    <a
-                      href={item.href}
-                      onClick={(e) => handleNavClick(e, item.href)}
-                      className="block py-4 px-6 text-xl font-normal text-text-primary hover:text-pastel-pink hover:bg-ivory-dark rounded-xl transition-colors duration-300 text-center"
-                    >
-                      {item.label}
-                    </a>
-                  </m.li>
-                ))}
-              </ul>
-            </nav>
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-            {/* 閉じるボタン */}
-            <m.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.8 }}
-              onClick={() => setIsMenuOpen(false)}
-              className="absolute top-6 right-6 p-2 text-text-primary hover:text-pastel-pink transition-colors"
-              aria-label="メニューを閉じる"
-            >
-              <svg
-                className="w-8 h-8"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            </m.button>
-          </m.div>
-        )}
-      </AnimatePresence>
-    </m.header>
+          {/* 閉じるボタン */}
+          <button
+            onClick={closeMenu}
+            className="absolute top-6 right-6 p-2 text-text-primary hover:text-pastel-pink transition-all duration-500"
+            style={{ opacity: menuReady ? 1 : 0, transitionDelay: "0.6s" }}
+            aria-label="メニューを閉じる"
+          >
+            <svg className="w-8 h-8" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+          </button>
+        </div>
+      )}
+    </header>
   );
 }

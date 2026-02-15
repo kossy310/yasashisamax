@@ -1,6 +1,3 @@
-"use client";
-
-import { m } from "framer-motion";
 import { ReactNode } from "react";
 
 type ButtonVariant = "primary" | "secondary" | "ghost" | "line";
@@ -33,36 +30,20 @@ export function Button({
   type = "button",
 }: ButtonProps) {
   const baseStyles =
-    "px-8 py-4 rounded-full font-normal transition-all duration-300";
+    "px-8 py-4 rounded-full font-normal transition-all duration-300 hover-scale";
   const combinedStyles = `${baseStyles} ${variantStyles[variant]} ${className}`;
-
-  const motionProps = {
-    whileHover: { scale: 1.05, y: -2 },
-    whileTap: { scale: 0.98 },
-    transition: { type: "spring" as const, stiffness: 400, damping: 17 },
-  };
 
   if (href) {
     return (
-      <m.a
-        href={href}
-        className={combinedStyles}
-        {...motionProps}
-        style={{ display: "inline-block" }}
-      >
+      <a href={href} className={combinedStyles} style={{ display: "inline-block" }}>
         {children}
-      </m.a>
+      </a>
     );
   }
 
   return (
-    <m.button
-      type={type}
-      onClick={onClick}
-      className={combinedStyles}
-      {...motionProps}
-    >
+    <button type={type} onClick={onClick} className={combinedStyles}>
       {children}
-    </m.button>
+    </button>
   );
 }

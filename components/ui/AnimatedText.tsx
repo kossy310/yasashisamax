@@ -1,6 +1,6 @@
 "use client";
 
-import { m } from "framer-motion";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 type AnimatedTextProps = {
   text: string;
@@ -10,7 +10,7 @@ type AnimatedTextProps = {
 };
 
 /**
- * 一文字ずつフェードインするテキストアニメーション（CSS ベースでメインスレッド負荷を軽減）
+ * 一文字ずつフェードインするテキストアニメーション（CSS ベース）
  */
 export function AnimatedText({
   text,
@@ -44,24 +44,20 @@ type AnimatedSectionTitleProps = {
 };
 
 /**
- * スクロール時にアニメーションするセクションタイトル
+ * スクロール時にアニメーションするセクションタイトル（CSS + Intersection Observer）
  */
 export function AnimatedSectionTitle({
   children,
   className = "",
 }: AnimatedSectionTitleProps) {
+  const { ref, isVisible } = useScrollReveal();
+
   return (
-    <m.h2
-      className={className}
-      initial={{ opacity: 0, y: 50, scale: 0.95 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{
-        duration: 0.8,
-        ease: [0.25, 0.4, 0.25, 1],
-      }}
+    <h2
+      ref={ref}
+      className={`${className} ${isVisible ? "animate-scale-in" : "scroll-hidden"}`}
     >
       {children}
-    </m.h2>
+    </h2>
   );
 }

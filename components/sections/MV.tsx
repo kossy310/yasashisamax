@@ -1,6 +1,5 @@
 "use client";
 
-import { m } from "framer-motion";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
@@ -15,13 +14,8 @@ export function MV() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    // 初回マウント時にデバイス判定
-    const checkDevice = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
+    const checkDevice = () => setIsMobile(window.innerWidth < 768);
     checkDevice();
-    
-    // リサイズ時も判定（オプション）
     window.addEventListener("resize", checkDevice);
     return () => window.removeEventListener("resize", checkDevice);
   }, []);
@@ -31,103 +25,53 @@ export function MV() {
       id="mv"
       className="h-[600px] md:h-[700px] flex items-center justify-center relative overflow-hidden pt-20"
     >
-      {/* 背景画像（条件分岐で片方だけレンダリング） */}
+      {/* 背景画像 */}
       <div className="absolute inset-0 z-0">
         {isMobile ? (
-          // スマホ用背景画像のみレンダリング
-          <Image
-            src={mvSpImage}
-            alt={MV_ALT}
-            fill
-            priority
-            placeholder="blur"
-            sizes="100vw"
-            className="object-cover"
-            quality={75}
-          />
+          <Image src={mvSpImage} alt={MV_ALT} fill priority placeholder="blur" sizes="100vw" className="object-cover" quality={75} />
         ) : (
-          // PC用背景画像のみレンダリング
-          <Image
-            src={mvImage}
-            alt={MV_ALT}
-            fill
-            priority
-            placeholder="blur"
-            sizes="100vw"
-            className="object-cover"
-            quality={75}
-          />
+          <Image src={mvImage} alt={MV_ALT} fill priority placeholder="blur" sizes="100vw" className="object-cover" quality={75} />
         )}
         <div className="absolute inset-0 bg-gradient-to-b from-ivory/80 via-ivory/70 to-ivory/85" />
       </div>
 
-      {/* 背景装飾 */}
-      <m.div
-        className="absolute top-20 right-10 w-64 h-64 rounded-full bg-pastel-pink/30 blur-3xl z-[1]"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      <m.div
-        className="absolute bottom-20 left-10 w-80 h-80 rounded-full bg-pastel-blue/30 blur-3xl z-[1]"
-        animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 1,
-        }}
-      />
+      {/* 背景装飾（CSS アニメーション） */}
+      <div className="absolute top-20 right-10 w-64 h-64 rounded-full bg-pastel-pink/30 blur-3xl z-[1] animate-pulse-pink" />
+      <div className="absolute bottom-20 left-10 w-80 h-80 rounded-full bg-pastel-blue/30 blur-3xl z-[1] animate-pulse-blue" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="text-center">
           <h1
             className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-heading font-bold text-[#2d3748] mb-4 sm:mb-6 leading-tight"
-            style={{
-              textShadow:
-                "0 1px 4px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.15)",
-            }}
+            style={{ textShadow: "0 1px 4px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.15)" }}
           >
             <AnimatedText text="HPも名刺も業務の自動化も。" delay={0.2} />
             <br />
             <AnimatedText text="少ない予算で、ちゃんと作る。" delay={0.8} />
           </h1>
 
-          <m.p
-            className="text-sm sm:text-base md:text-xl text-[#4a5568] mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed px-2"
+          <p
+            className="text-sm sm:text-base md:text-xl text-[#4a5568] mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed px-2 animate-fade-up"
             style={{
-              textShadow:
-                "0 1px 3px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.15)",
+              textShadow: "0 1px 3px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.15)",
+              animationDelay: "0.4s",
+              animationFillMode: "both",
             }}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
           >
             「何から始めればいいかわからない」そんな方に寄り添います。
             <br />
             HP制作は最短7日、名刺・印刷・動画も低価格で。
             <br />
             まずは小さく始めることから、一緒に進めましょう。
-          </m.p>
+          </p>
 
-          <m.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          <div
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-up"
             style={{
-              filter:
-                "drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2))",
+              filter: "drop-shadow(0 2px 6px rgba(0, 0, 0, 0.3)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2))",
+              animationDelay: "0.6s",
+              animationFillMode: "both",
             }}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
           >
             <Button variant="line" href="#contact">
               LINEで相談する
@@ -135,7 +79,7 @@ export function MV() {
             <Button variant="ghost" href="#contact">
               Webフォームから連絡
             </Button>
-          </m.div>
+          </div>
         </div>
       </div>
     </section>

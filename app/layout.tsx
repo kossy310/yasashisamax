@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
-import { FramerMotionProvider } from "@/components/providers/FramerMotionProvider";
 import "./globals.css";
 
 const notoSansJP = Noto_Sans_JP({
@@ -42,7 +41,7 @@ export default function RootLayout({
       <body
         className={`${notoSansJP.variable} antialiased`}
       >
-        <FramerMotionProvider>{children}</FramerMotionProvider>
+        {children}
       </body>
     </html>
   );

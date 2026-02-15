@@ -1,7 +1,7 @@
 "use client";
 
-import { m } from "framer-motion";
 import { AnimatedSectionTitle } from "@/components/ui/AnimatedText";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const plans = [
   {
@@ -40,15 +40,16 @@ const plans = [
 ];
 
 export function Pricing() {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollReveal();
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollReveal();
+  const { ref: infoRef, isVisible: infoVisible } = useScrollReveal();
+
   return (
     <section id="pricing" className="py-24 bg-ivory-dark">
       <div className="max-w-7xl mx-auto px-6">
-        <m.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+        <div
+          ref={titleRef}
+          className={`text-center mb-16 ${titleVisible ? "animate-fade-up" : "scroll-hidden"}`}
         >
           <AnimatedSectionTitle className="text-4xl md:text-5xl font-heading font-bold text-text-primary mb-6">
             料金プランの一例
@@ -56,23 +57,16 @@ export function Pricing() {
           <p className="text-lg text-text-secondary max-w-2xl mx-auto">
             まずは小さく、始めやすく。必要に応じて、段階的に拡張できるプランです。
           </p>
-        </m.div>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {plans.map((plan, index) => (
-            <m.div
+            <div
               key={plan.name}
-              className={`relative bg-white rounded-3xl p-8 shadow-soft ${
+              className={`relative bg-white rounded-3xl p-8 shadow-soft hover-lift ${
                 plan.recommended ? "ring-2 ring-pastel-pink ring-offset-4 ring-offset-ivory-dark" : ""
-              }`}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 * index }}
-              whileHover={{
-                y: -8,
-                boxShadow: "0 12px 40px rgba(0, 0, 0, 0.12)",
-              }}
+              } ${cardsVisible ? "animate-fade-up" : "scroll-hidden"}`}
+              style={{ animationDelay: `${0.1 * index}s`, animationFillMode: "both" }}
             >
               {plan.recommended && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-pastel-pink rounded-full text-sm font-normal text-text-primary">
@@ -100,16 +94,13 @@ export function Pricing() {
                 </p>
                 <p className="text-text-secondary text-xs mt-2">{plan.note}</p>
               </div>
-            </m.div>
+            </div>
           ))}
         </div>
 
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="bg-pastel-pink/30 rounded-3xl p-8 md:p-10 shadow-soft"
+        <div
+          ref={infoRef}
+          className={`bg-pastel-pink/30 rounded-3xl p-8 md:p-10 shadow-soft ${infoVisible ? "animate-fade-up" : "scroll-hidden"}`}
         >
           <h4 className="text-xl font-heading font-bold text-text-primary mb-4">
             ホームページ制作、なぜWordPressじゃないの？
@@ -126,7 +117,7 @@ export function Pricing() {
           <p className="text-text-secondary leading-relaxed">
             「安全に、速く、長く使える」—— そんなホームページをお届けします。
           </p>
-        </m.div>
+        </div>
       </div>
     </section>
   );

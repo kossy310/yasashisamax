@@ -1,7 +1,7 @@
 "use client";
 
-import { m } from "framer-motion";
 import { AnimatedSectionTitle } from "@/components/ui/AnimatedText";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const services = [
   {
@@ -37,15 +37,15 @@ const services = [
 ];
 
 export function Service() {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollReveal();
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollReveal();
+
   return (
     <section id="service" className="py-24 bg-ivory">
       <div className="max-w-7xl mx-auto px-6">
-        <m.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+        <div
+          ref={titleRef}
+          className={`text-center mb-16 ${titleVisible ? "animate-fade-up" : "scroll-hidden"}`}
         >
           <AnimatedSectionTitle className="text-4xl md:text-5xl font-heading font-bold text-text-primary mb-6">
             サービス
@@ -53,30 +53,20 @@ export function Service() {
           <p className="text-lg text-text-secondary">
             あなたのビジネスに必要なものを、手の届く価格で。
           </p>
-        </m.div>
+        </div>
 
-        <m.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <h3 className="text-2xl md:text-3xl font-heading font-bold text-text-primary mb-8 text-center">
+        <div ref={cardsRef}>
+          <h3
+            className={`text-2xl md:text-3xl font-heading font-bold text-text-primary mb-8 text-center ${cardsVisible ? "animate-fade-up" : "scroll-hidden"}`}
+          >
             主力事業
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <m.div
+              <div
                 key={service.title}
-                className="bg-white rounded-3xl p-8 shadow-soft min-w-0 flex flex-col"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 * index }}
-                whileHover={{
-                  y: -8,
-                  boxShadow: "0 12px 40px rgba(0, 0, 0, 0.15)",
-                }}
+                className={`bg-white rounded-3xl p-8 shadow-soft min-w-0 flex flex-col hover-lift ${cardsVisible ? "animate-fade-up" : "scroll-hidden"}`}
+                style={{ animationDelay: `${0.1 * index}s`, animationFillMode: "both" }}
               >
                 <div className="text-5xl mb-4">{service.icon}</div>
                 <h4 className="text-xl font-heading font-bold text-text-primary mb-4">
@@ -85,10 +75,10 @@ export function Service() {
                 <p className="text-text-secondary leading-relaxed flex-1">
                   {service.description}
                 </p>
-              </m.div>
+              </div>
             ))}
           </div>
-        </m.div>
+        </div>
       </div>
     </section>
   );
