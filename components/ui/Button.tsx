@@ -15,9 +15,12 @@ type ButtonProps = {
 };
 
 const variantStyles: Record<ButtonVariant, string> = {
-  primary: "bg-pastel-pink text-text-primary hover:bg-opacity-80",
-  secondary: "bg-pastel-blue text-text-primary hover:bg-opacity-80",
-  ghost: "bg-transparent border-2 border-text-primary text-text-primary hover:bg-text-primary hover:text-ivory",
+  primary:
+    "bg-pastel-pink text-text-primary hover:brightness-110 hover:shadow-lg active:brightness-95 active:scale-[0.98] cursor-pointer",
+  secondary:
+    "bg-pastel-blue text-text-primary hover:brightness-110 hover:shadow-lg active:brightness-95 active:scale-[0.98] cursor-pointer",
+  ghost:
+    "bg-transparent border-2 border-text-primary text-text-primary hover:bg-pastel-pink hover:text-text-primary",
   line: "bg-[#06C755] text-white hover:bg-[#05B04C]",
 };
 
@@ -29,7 +32,8 @@ export function Button({
   className = "",
   type = "button",
 }: ButtonProps) {
-  const baseStyles = "px-8 py-4 rounded-full font-medium transition-all duration-300";
+  const baseStyles =
+    "px-8 py-4 rounded-full font-medium transition-all duration-300";
   const combinedStyles = `${baseStyles} ${variantStyles[variant]} ${className}`;
 
   const motionProps = {
