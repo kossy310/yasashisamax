@@ -6,15 +6,18 @@ const notoSansJP = Noto_Sans_JP({
   variable: "--font-noto-sans",
   subsets: ["latin"],
   weight: ["400", "500", "700"],
+  display: "swap",
 });
 
 const zenMaruGothic = Zen_Maru_Gothic({
   variable: "--font-zen-maru",
   subsets: ["latin"],
   weight: ["400", "500", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.yasashisa-max.com"),
   title: "やさしさマックス - HPも名刺も業務の自動化も。少ない予算で、ちゃんと作る。",
   description:
     "やさしさマックスでHPも名刺も業務の自動化も。少ない予算で、ちゃんと作る。HP制作は最短7日、名刺・印刷・動画も低価格で承ります。",

@@ -19,7 +19,7 @@ export function MV() {
       <div className="absolute inset-0 z-0">
         {/* PC用背景画像 */}
         <Image
-          src="/mv/mv.png"
+          src="/mv/mv.jpg"
           alt="やさしさマックスはHPも名刺も業務の自動化も。少ない予算で、ちゃんと作る"
           fill
           sizes="(max-width: 768px) 100vw, 1920px"
@@ -31,7 +31,7 @@ export function MV() {
         />
         {/* スマホ用背景画像 */}
         <Image
-          src="/mv/mv_sp.png"
+          src="/mv/mv_sp.jpg"
           alt="やさしさマックスはHPも名刺も業務の自動化も。少ない予算で、ちゃんと作る"
           fill
           sizes="(max-width: 768px) 100vw, 768px"

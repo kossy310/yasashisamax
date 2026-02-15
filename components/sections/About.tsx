@@ -46,7 +46,7 @@ export function About() {
             className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-soft"
           >
             <Image
-              src="/about/about1.png"
+              src="/about/about1.jpg"
               alt="寄り添う優しさ"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
@@ -62,7 +62,7 @@ export function About() {
             className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-soft"
           >
             <Image
-              src="/about/about2.png"
+              src="/about/about2.jpg"
               alt="心が解ける瞬間"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
