@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -11,8 +12,20 @@ export default function VisionContent() {
       <Header />
       <main className="bg-ivory">
         {/* ヒーローセクション */}
-        <section className="pt-32 pb-24 bg-gradient-to-b from-ivory to-ivory-dark">
-          <div className="max-w-4xl mx-auto px-6 text-center">
+        <section className="relative pt-32 pb-24 overflow-hidden">
+          {/* 背景画像 */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/news/優しさマックスにできること.jpg"
+              alt="やさしさマックスにできること"
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-ivory/90 via-ivory/80 to-ivory-dark/95" />
+          </div>
+          <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
