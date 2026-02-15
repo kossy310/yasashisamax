@@ -14,10 +14,12 @@ export function MV() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const checkDevice = () => setIsMobile(window.innerWidth < 768);
-    checkDevice();
-    window.addEventListener("resize", checkDevice);
-    return () => window.removeEventListener("resize", checkDevice);
+    // matchMedia はレイアウトを強制しない（innerWidth と違い強制リフローを回避）
+    const mql = window.matchMedia("(max-width: 767px)");
+    setIsMobile(mql.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
   }, []);
 
   return (
@@ -73,12 +75,8 @@ export function MV() {
               animationFillMode: "both",
             }}
           >
-            <Button variant="line" href="#contact">
-              LINEで相談する
-            </Button>
-            <Button variant="ghost" href="#contact">
-              Webフォームから連絡
-            </Button>
+            <Button variant="line" href="#contact">LINEで相談する</Button>
+            <Button variant="ghost" href="#contact">Webフォームから連絡</Button>
           </div>
         </div>
       </div>

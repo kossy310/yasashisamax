@@ -1,15 +1,11 @@
-"use client";
-
 import { AnimatedSectionTitle } from "@/components/ui/AnimatedText";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const plans = [
   {
     name: "ライトホームページプラン",
     subtitle: "Next.js / CMSなし",
     icon: "🌐",
-    description:
-      "名刺代わりの1ページサイト。お問い合わせフォーム（スパム対策付き）・独自ドメイン取得・スマホ対応。",
+    description: "名刺代わりの1ページサイト。お問い合わせフォーム（スパム対策付き）・独自ドメイン取得・スマホ対応。",
     initial: "100,000",
     monthly: "11,000",
     note: "税抜／月額は管理費（ドメイン・サーバー・軽微な修正含む）",
@@ -19,8 +15,7 @@ const plans = [
     name: "ビジネス成長サポートプラン",
     subtitle: "CMSあり ＋ アナリティクス",
     icon: "📊",
-    description:
-      "お知らせ・ブログを自分で更新できるCMS導入。アクセス解析＋月1回の解析レポートで集客改善をサポート。",
+    description: "お知らせ・ブログを自分で更新できるCMS導入。アクセス解析＋月1回の解析レポートで集客改善をサポート。",
     initial: "150,000",
     monthly: "16,500",
     note: "税抜／月額にCMS利用・月1回解析レポート含む",
@@ -30,8 +25,7 @@ const plans = [
     name: "DX伴走パック",
     subtitle: "複数ページ ＋ 業務自動化",
     icon: "🚀",
-    description:
-      "3〜5ページのWebサイト＋ヘッドレスCMS。問い合わせをスプレッドシートに自動保存し、LINEへ通知。月1回のオンラインMTGで解析・改善を伴走。",
+    description: "3〜5ページのWebサイト＋ヘッドレスCMS。問い合わせをスプレッドシートに自動保存し、LINEへ通知。月1回のオンラインMTGで解析・改善を伴走。",
     initial: "300,000〜",
     monthly: "33,000〜",
     note: "税抜／ページ数・機能によりお見積り",
@@ -40,17 +34,10 @@ const plans = [
 ];
 
 export function Pricing() {
-  const { ref: titleRef, isVisible: titleVisible } = useScrollReveal();
-  const { ref: cardsRef, isVisible: cardsVisible } = useScrollReveal();
-  const { ref: infoRef, isVisible: infoVisible } = useScrollReveal();
-
   return (
     <section id="pricing" className="py-24 bg-ivory-dark">
       <div className="max-w-7xl mx-auto px-6">
-        <div
-          ref={titleRef}
-          className={`text-center mb-16 ${titleVisible ? "animate-fade-up" : "scroll-hidden"}`}
-        >
+        <div data-scroll="fade-up" className="scroll-hidden text-center mb-16">
           <AnimatedSectionTitle className="text-4xl md:text-5xl font-heading font-bold text-text-primary mb-6">
             料金プランの一例
           </AnimatedSectionTitle>
@@ -59,14 +46,15 @@ export function Pricing() {
           </p>
         </div>
 
-        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          {plans.map((plan, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          {plans.map((plan, i) => (
             <div
               key={plan.name}
-              className={`relative bg-white rounded-3xl p-8 shadow-soft hover-lift ${
+              data-scroll="fade-up"
+              className={`scroll-hidden relative bg-white rounded-3xl p-8 shadow-soft hover-lift ${
                 plan.recommended ? "ring-2 ring-pastel-pink ring-offset-4 ring-offset-ivory-dark" : ""
-              } ${cardsVisible ? "animate-fade-up" : "scroll-hidden"}`}
-              style={{ animationDelay: `${0.1 * index}s`, animationFillMode: "both" }}
+              }`}
+              style={{ animationDelay: `${0.1 * i}s`, animationFillMode: "both" }}
             >
               {plan.recommended && (
                 <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-pastel-pink rounded-full text-sm font-normal text-text-primary">
@@ -74,23 +62,17 @@ export function Pricing() {
                 </span>
               )}
               <div className="text-4xl mb-4">{plan.icon}</div>
-              <h3 className="text-xl font-heading font-bold text-text-primary mb-1">
-                {plan.name}
-              </h3>
+              <h3 className="text-xl font-heading font-bold text-text-primary mb-1">{plan.name}</h3>
               <p className="text-sm text-text-secondary mb-4">{plan.subtitle}</p>
-              <p className="text-text-secondary text-sm leading-relaxed mb-6">
-                {plan.description}
-              </p>
+              <p className="text-text-secondary text-sm leading-relaxed mb-6">{plan.description}</p>
               <div className="border-t border-ivory-dark pt-6">
                 <p className="text-text-secondary text-sm mb-1">初期費用</p>
                 <p className="text-2xl font-heading font-bold text-text-primary">
-                  {plan.initial}
-                  <span className="text-base font-normal">円（税抜）</span>
+                  {plan.initial}<span className="text-base font-normal">円（税抜）</span>
                 </p>
                 <p className="text-text-secondary text-sm mt-3 mb-1">月額管理費</p>
                 <p className="text-xl font-heading font-bold text-text-primary">
-                  {plan.monthly}
-                  <span className="text-base font-normal">円（税抜）</span>
+                  {plan.monthly}<span className="text-base font-normal">円（税抜）</span>
                 </p>
                 <p className="text-text-secondary text-xs mt-2">{plan.note}</p>
               </div>
@@ -98,10 +80,7 @@ export function Pricing() {
           ))}
         </div>
 
-        <div
-          ref={infoRef}
-          className={`bg-pastel-pink/30 rounded-3xl p-8 md:p-10 shadow-soft ${infoVisible ? "animate-fade-up" : "scroll-hidden"}`}
-        >
+        <div data-scroll="fade-up" className="scroll-hidden bg-pastel-pink/30 rounded-3xl p-8 md:p-10 shadow-soft">
           <h4 className="text-xl font-heading font-bold text-text-primary mb-4">
             ホームページ制作、なぜWordPressじゃないの？
           </h4>

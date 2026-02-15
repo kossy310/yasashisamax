@@ -1,7 +1,3 @@
-"use client";
-
-import { useScrollReveal } from "@/hooks/useScrollReveal";
-
 type AnimatedTextProps = {
   text: string;
   className?: string;
@@ -10,7 +6,7 @@ type AnimatedTextProps = {
 };
 
 /**
- * 一文字ずつフェードインするテキストアニメーション（CSS ベース）
+ * 一文字ずつフェードインするテキストアニメーション（CSS ベース・サーバーコンポーネント）
  */
 export function AnimatedText({
   text,
@@ -44,19 +40,14 @@ type AnimatedSectionTitleProps = {
 };
 
 /**
- * スクロール時にアニメーションするセクションタイトル（CSS + Intersection Observer）
+ * スクロール時にアニメーションするセクションタイトル（data-scroll でグローバル Observer が処理）
  */
 export function AnimatedSectionTitle({
   children,
   className = "",
 }: AnimatedSectionTitleProps) {
-  const { ref, isVisible } = useScrollReveal();
-
   return (
-    <h2
-      ref={ref}
-      className={`${className} ${isVisible ? "animate-scale-in" : "scroll-hidden"}`}
-    >
+    <h2 data-scroll="scale-in" className={`scroll-hidden ${className}`}>
       {children}
     </h2>
   );

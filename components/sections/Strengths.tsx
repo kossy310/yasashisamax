@@ -1,7 +1,4 @@
-"use client";
-
 import { AnimatedSectionTitle } from "@/components/ui/AnimatedText";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const strengths = [
   {
@@ -25,38 +22,27 @@ const strengths = [
 ];
 
 export function Strengths() {
-  const { ref: titleRef, isVisible: titleVisible } = useScrollReveal();
-  const { ref: cardsRef, isVisible: cardsVisible } = useScrollReveal();
-
   return (
     <section id="strengths" className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div
-          ref={titleRef}
-          className={`text-center mb-16 ${titleVisible ? "animate-fade-up" : "scroll-hidden"}`}
-        >
+        <div data-scroll="fade-up" className="scroll-hidden text-center mb-16">
           <AnimatedSectionTitle className="text-4xl md:text-5xl font-heading font-bold text-text-primary mb-6">
             やさしさマックスの強み
           </AnimatedSectionTitle>
-          <p className="text-lg text-text-secondary">
-            選ばれる理由は、この3つ。
-          </p>
+          <p className="text-lg text-text-secondary">選ばれる理由は、この3つ。</p>
         </div>
 
-        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {strengths.map((strength, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {strengths.map((s, i) => (
             <div
-              key={strength.title}
-              className={`bg-ivory-dark rounded-3xl p-8 shadow-soft hover-lift ${cardsVisible ? "animate-fade-up" : "scroll-hidden"}`}
-              style={{ animationDelay: `${0.1 * index}s`, animationFillMode: "both" }}
+              key={s.title}
+              data-scroll="fade-up"
+              className="scroll-hidden bg-ivory-dark rounded-3xl p-8 shadow-soft hover-lift"
+              style={{ animationDelay: `${0.1 * i}s`, animationFillMode: "both" }}
             >
-              <div className="text-5xl mb-4">{strength.icon}</div>
-              <h3 className="text-xl font-heading font-bold text-text-primary mb-4">
-                {strength.title}
-              </h3>
-              <p className="text-text-secondary leading-relaxed">
-                {strength.description}
-              </p>
+              <div className="text-5xl mb-4">{s.icon}</div>
+              <h3 className="text-xl font-heading font-bold text-text-primary mb-4">{s.title}</h3>
+              <p className="text-text-secondary leading-relaxed">{s.description}</p>
             </div>
           ))}
         </div>

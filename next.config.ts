@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    inlineCss: true,
+  },
   async redirects() {
     return [
       { source: "/privacy", destination: "/privacypolicy", permanent: true },
