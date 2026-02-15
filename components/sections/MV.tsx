@@ -1,42 +1,63 @@
 "use client";
 
 import { m } from "framer-motion";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { AnimatedText } from "@/components/ui/AnimatedText";
+import mvImage from "@/public/mv/mv.jpg";
+import mvSpImage from "@/public/mv/mv_sp.jpg";
 
 const MV_ALT =
   "やさしさマックスはHPも名刺も業務の自動化も。少ない予算で、ちゃんと作る";
 
 export function MV() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // 初回マウント時にデバイス判定
+    const checkDevice = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkDevice();
+    
+    // リサイズ時も判定（オプション）
+    window.addEventListener("resize", checkDevice);
+    return () => window.removeEventListener("resize", checkDevice);
+  }, []);
+
   return (
     <section
       id="mv"
       className="h-[600px] md:h-[700px] flex items-center justify-center relative overflow-hidden pt-20"
     >
-      {/* 背景画像（WebP 優先で LCP 軽量化） */}
+      {/* 背景画像（条件分岐で片方だけレンダリング） */}
       <div className="absolute inset-0 z-0">
-        {/* PC用背景画像 */}
-        <picture className="absolute inset-0 hidden md:block">
-          <source srcSet="/mv/mv.webp" type="image/webp" />
-          <img
-            src="/mv/mv.jpg"
+        {isMobile ? (
+          // スマホ用背景画像のみレンダリング
+          <Image
+            src={mvSpImage}
             alt={MV_ALT}
-            className="object-cover w-full h-full"
-            fetchPriority="high"
-            decoding="async"
+            fill
+            priority
+            placeholder="blur"
+            sizes="100vw"
+            className="object-cover"
+            quality={75}
           />
-        </picture>
-        {/* スマホ用背景画像 */}
-        <picture className="absolute inset-0 block md:hidden">
-          <source srcSet="/mv/mv_sp.webp" type="image/webp" />
-          <img
-            src="/mv/mv_sp.jpg"
+        ) : (
+          // PC用背景画像のみレンダリング
+          <Image
+            src={mvImage}
             alt={MV_ALT}
-            className="object-cover w-full h-full"
-            fetchPriority="high"
-            decoding="async"
+            fill
+            priority
+            placeholder="blur"
+            sizes="100vw"
+            className="object-cover"
+            quality={75}
           />
-        </picture>
+        )}
         <div className="absolute inset-0 bg-gradient-to-b from-ivory/80 via-ivory/70 to-ivory/85" />
       </div>
 
