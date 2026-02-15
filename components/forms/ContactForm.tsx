@@ -28,27 +28,44 @@ export function ContactForm() {
   const widgetIdRef = useRef<string>("");
 
   useEffect(() => {
-    // Turnstileスクリプトを読み込み
-    const script = document.createElement("script");
-    script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
-    script.async = true;
-    script.defer = true;
-    document.head.appendChild(script);
+    const container = turnstileRef.current;
+    if (!container) return;
 
-    script.onload = () => {
-      if (window.turnstile && turnstileRef.current) {
-        widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
-          sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "",
-          callback: (token: string) => {
-            setTurnstileToken(token);
-          },
-        });
-      }
+    let scriptLoaded = false;
+
+    const loadTurnstile = () => {
+      if (scriptLoaded) return;
+      scriptLoaded = true;
+
+      const script = document.createElement("script");
+      script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js";
+      script.async = true;
+      script.defer = true;
+      script.onload = () => {
+        if (window.turnstile && turnstileRef.current) {
+          widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
+            sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "",
+            callback: (token: string) => {
+              setTurnstileToken(token);
+            },
+          });
+        }
+      };
+      document.head.appendChild(script);
     };
 
-    return () => {
-      document.head.removeChild(script);
-    };
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          loadTurnstile();
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "100px" }
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
