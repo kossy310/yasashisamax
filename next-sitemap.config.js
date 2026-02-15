@@ -2,6 +2,7 @@
 module.exports = {
   siteUrl: process.env.SITE_URL || "https://www.yasashisa-max.com",
   generateRobotsTxt: true,
+  generateIndexSitemap: false, // 単一 sitemap.xml にまとめ、Google の取得を安定させる
   additionalPaths: async () => {
     const domain = process.env.MICROCMS_SERVICE_DOMAIN;
     const apiKey = process.env.MICROCMS_API_KEY;
