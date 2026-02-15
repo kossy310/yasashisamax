@@ -36,7 +36,7 @@ export function Strengths() {
           className="text-center mb-16"
         >
           <AnimatedSectionTitle className="text-4xl md:text-5xl font-heading font-bold text-text-primary mb-6">
-            当社の強み
+            やさしさマックスの強み
           </AnimatedSectionTitle>
           <p className="text-lg text-text-secondary">
             選ばれる理由は、この3つ。
