@@ -31,6 +31,7 @@ export async function POST(request: Request) {
 
       if (event.type === "message" && event.message?.type === "text") {
         const text = event.message.text;
+        if (!text) continue; // textが存在しない場合はスキップ
         const replyText = getReplyMessage(text);
 
         await lineClient.replyMessage(event.replyToken, {
