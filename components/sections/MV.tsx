@@ -74,7 +74,7 @@ export function MV() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         <div className="text-center">
           <h1
-            className="text-2xl sm:text-4xl md:text-7xl font-heading font-bold text-[#2d3748] mb-4 sm:mb-6 leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-heading font-bold text-[#2d3748] mb-4 sm:mb-6 leading-tight"
             style={{
               textShadow:
                 "0 1px 4px rgba(0, 0, 0, 0.2), 0 2px 8px rgba(0, 0, 0, 0.15)",
