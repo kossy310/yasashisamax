@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.yasashisa-max.com
+
+# Sitemaps
+Sitemap: https://www.yasashisa-max.com/sitemap.xml
